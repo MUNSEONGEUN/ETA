@@ -3,23 +3,28 @@
 <head>
     <title>Sign Language Game</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_game.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 </head>
 <body id="body">
     <h1>Sign Language Game</h1>
-    <div id="result">No hands detected</div>
-    <div id="predicted-word">Predicted Word: <span id="word"></span></div>
+    <div class="button-container">
+        <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
+        <button class="category-button" onclick="setMode('numbers')">Numbers</button>
+        <button class="category-button" onclick="setMode('words')">Words</button>
+    </div>
     <div class="wrapper">
-        <video id="video" width="640" height="480" autoplay></video>
-        <canvas id="outputCanvas" width="640" height="480"></canvas>
-        <canvas id="gameCanvas" width="640" height="480"></canvas>
+        <div id="game-area">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+        </div>
+    </div>
+    <div id="camera-area">
+        <video id="video" autoplay></video>
+        <canvas id="outputCanvas"></canvas>
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-
-    <script src="{% static 'js/translator.js' %}"></script>
     <script src="{% static 'js/game.js' %}"></script>
 </body>
 </html>
