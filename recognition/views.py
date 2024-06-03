@@ -3,18 +3,23 @@ from django.http import JsonResponse
 import numpy as np
 import json
 import pickle
+from pathlib import Path
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
+# BASE_DIR 설정
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# 피클 파일 경로 설정
 # 피클 파일 경로 설정
 model_paths = {
-    'alphabet': 'C:/model/alphabet_model.pkl',
-    'numbers': 'C:/model/num_model.pkl',
-    'words': 'C:/model/word_model.pkl'
+    'alphabet': BASE_DIR / 'model' / 'alphabet_model.pkl',
+    'numbers': BASE_DIR / 'model' / 'num_model.pkl',
+    'words': BASE_DIR / 'model' / 'word_model.pkl'
 }
 label_encoder_paths = {
-    'alphabet': 'C:/pkl/alphabet_label_encoder.pkl',
-    'numbers': 'C:/pkl/num_label_encoder.pkl',
-    'words': 'C:/pkl/word_label_encoder.pkl'
+    'alphabet': BASE_DIR / 'pkl' / 'alphabet_label_encoder.pkl',
+    'numbers': BASE_DIR / 'pkl' / 'num_label_encoder.pkl',
+    'words': BASE_DIR / 'pkl' / 'word_label_encoder.pkl'
 }
 
 # 모델과 라벨 인코더 로드
@@ -29,6 +34,9 @@ for category in model_paths:
 
 def index(request):
     return render(request, 'recognition/index.html')
+
+def game(request):
+    return render(request, 'recognition/game.html')
 
 def calculate_scores(y_true, y_pred):
     precision = precision_score(y_true, y_pred, average='weighted', zero_division=1)
