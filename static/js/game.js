@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch(url);
             const data = await response.json();
             words[mode] = data[mode];
+            console.log(`Fetched ${mode} labels:`, words[mode]); // 디버깅 메시지
         } catch (error) {
             console.error(`Error fetching ${mode} labels:`, error);
         }
     }
 
     function createFallingWord() {
+        if (words[currentMode].length === 0) return;
         const word = words[currentMode][Math.floor(Math.random() * words[currentMode].length)];
         const x = Math.random() * (gameCanvas.width - 100);
         const y = 0;
@@ -51,31 +53,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkCollision(predictedWord) {
+        console.log(`Checking collision for: ${predictedWord}`); // 디버깅 메시지
         fallingWords.forEach((wordObj, index) => {
-            if (wordObj.word === predictedWord && wordObj.y < gameCanvas.height - 50) {
+            console.log(`Comparing with: ${wordObj.word}`); // 디버깅 메시지
+            // predictedWord와 wordObj.word를 문자열로 변환하여 비교
+            if (String(wordObj.word) === String(predictedWord) && wordObj.y < gameCanvas.height - 50) {
                 fallingWords.splice(index, 1); // 단어 맞추기
+                console.log(`Removed word: ${wordObj.word}`); // 디버깅 메시지
             }
         });
     }
+    
 
-    function setMode(mode) {
+    window.setMode = function(mode) {
         currentMode = mode;
         fetchLabels(mode);
         fallingWords = [];
-        updateBackgroundColor(mode);
-    }
-
-    function updateBackgroundColor(mode) {
-        const body = document.getElementById('body');
-        body.classList.remove('alphabet-mode', 'numbers-mode', 'words-mode');
-        if (mode === 'alphabet') {
-            body.classList.add('alphabet-mode');
-        } else if (mode === 'numbers') {
-            body.classList.add('numbers-mode');
-        } else if (mode === 'words') {
-            body.classList.add('words-mode');
+        samePredictionCount = 0;
+        const predictedWordElement = document.getElementById('predicted-word');
+        if (predictedWordElement) {
+            predictedWordElement.innerText = ''; // 예측된 단어 초기화
         }
-    }
+    };
 
     document.querySelector('.button-container').onclick = (event) => {
         if (event.target.tagName === 'BUTTON') {
@@ -132,6 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
             handsResults.multiHandLandmarks.forEach((landmarks) => {
                 drawBoundingBox(ctx, landmarks, {color: 'brown', lineWidth: 2});
             });
+
+            const landmarksArray = handsResults.multiHandLandmarks.flat().map(landmark => [landmark.x, landmark.y, landmark.z]);
+            if (landmarksArray.length > 0) {
+                sendLandmarks(landmarksArray);
+            }
         }
     }
 
@@ -158,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({ landmarks: landmarks })
+            body: JSON.stringify({ landmarks: landmarks, category: currentMode })
         })
         .then(response => {
             if (!response.ok) {
@@ -168,28 +172,21 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             const finalPrediction = data.final_prediction;
+            console.log(`Predicted word: ${finalPrediction}`); // 디버깅 메시지
             if (data.probabilities[0] > 0.5) {
                 samePredictionCount++;
-            } else {
-                samePredictionCount = 0;
-            }
+            } 
             if (samePredictionCount >= minPredictionCount) {
                 checkCollision(finalPrediction);
                 samePredictionCount = 0;
+            }
+            const predictedWordElement = document.getElementById('predicted-word');
+            if (predictedWordElement) {
+                predictedWordElement.innerText = finalPrediction; // 예측된 단어 업데이트
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
     }
-    
-    function setMode(mode) {
-        currentMode = mode;
-        fetchLabels(mode);
-        fallingWords = [];
-        
-        // Body 클래스 변경
-        document.body.className = `${mode}-mode`;
-    }
-    
 });
