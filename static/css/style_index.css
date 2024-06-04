@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    transition: background-color 0.5s ease;
+    position: relative; 
+    background-color: #f0f8ff; /* AliceBlue 배경색 */
+}
+
+h1 {
+    color: #4682b4; /* SteelBlue 색상 */
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+#camera-area {
+    position: relative;
+    width: 640px; 
+    height: 480px;
+}
+
+canvas {
+    border: 5px solid #4682b4; /* SteelBlue 색상 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#outputCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+#result, #predicted-word {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.category-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4682b4; /* SteelBlue 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.category-button:hover {
+    background-color: #5a9bd4; /* 밝은 SteelBlue 색상 */
+}
+
+#word {
+    font-weight: bold;
+    color: #a2e1db; /* 밝은 청록색 */
+}

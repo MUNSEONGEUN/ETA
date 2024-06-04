@@ -1,0 +1,98 @@
+body.alphabet-mode {
+    background-color: #ECEAE4;
+    background-image: linear-gradient(135deg, #FFDBCC 25%, transparent 25%), linear-gradient(225deg, #FFDBCC 25%, transparent 25%), linear-gradient(45deg, #FFDBCC 25%, transparent 25%), linear-gradient(315deg, #FFDBCC 25%, #ECEAE4 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+body.numbers-mode {
+    background-color: #E4EAF1;
+    background-image: linear-gradient(135deg, #CCDBFF 25%, transparent 25%), linear-gradient(225deg, #CCDBFF 25%, transparent 25%), linear-gradient(45deg, #CCDBFF 25%, transparent 25%), linear-gradient(315deg, #CCDBFF 25%, #E4EAF1 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+body.words-mode {
+    background-color: #E4F1E4;
+    background-image: linear-gradient(135deg, #CCFFCC 25%, transparent 25%), linear-gradient(225deg, #CCFFCC 25%, transparent 25%), linear-gradient(45deg, #CCFFCC 25%, transparent 25%), linear-gradient(315deg, #CCFFCC 25%, #E4F1E4 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    transition: background-color 0.5s ease;
+    position: relative; 
+}
+
+h1 {
+    color: #333;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+#game-area {
+    width: 800px; /* 고정 너비 */
+    height: 600px; /* 고정 높이 */
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #55cbcd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#camera-area {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 160px;
+    height: 120px;
+}
+
+canvas {
+    border: 5px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#outputCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+#result, #predicted-word {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.category-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#text-input {
+    margin-top: 20px;
+    font-size: 24px;
+    width: 80%;
+    padding: 10px;
+}
