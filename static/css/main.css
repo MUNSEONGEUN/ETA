@@ -1,6 +1,14 @@
-@import url(reset.css);
+@import url("reset.css");
 body {
-    background: white;
+	font-family: Arial, sans-serif;
+	display: flex;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	background-color: #f8f8f8;
+	margin-top: 20px;
+	justify-content: center;
+	margin-bottom: 60px; /* 페이지 하단 여백 */
 }
 article {
     margin-top: 15vh;
@@ -15,6 +23,12 @@ article {
     gap: 10px;
     width: 70%;
     margin-top: 20px;
+}
+.menu {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+	justify-content: center;
 }
 /* .menu:after {
     content: "";
@@ -104,4 +118,24 @@ footer {
 
 .footer-text {
 font-weight: bold;
+}
+.info-container {
+    margin: 20px;
+    text-align: center;
+}
+.info-container button {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+}
+.info-container button:hover {
+    background-color: #ddd;
+}
+#translatedTextContainer {
+    margin-top: 20px;
 }
