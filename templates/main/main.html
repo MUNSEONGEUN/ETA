@@ -1,116 +1,69 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-            <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-            <style>
-                
-                .footer-text {
-                    text-align: center;
-                    font-size: 25px;
-                    font-weight: bold;
-                    color: #55CBCD;
-                    text-shadow: 1px 1px 2px #000000;
-                    margin: 20px 0;
-                }
-                .video-container {
-                    display: flex;
-                    justify-content: center;
-                    margin-top: 20px;
-                }
-                .video-container iframe {
-                    width: 80vw; /* 화면 너비의 80% */
-                    height: 45vw; /* 화면 너비의 45% */
-                    max-width: 800px;
-                    max-height: 450px;
-                    border: none;
-                }
-                .info-container {
-                    padding: 20px;
-                    background-color: #ffffff;
-                    border-radius: 8px;
-                    margin: 20px auto;
-                    width: 80vw;
-                    max-width: 800px;
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                }
-                .info-container h2 {
-                    font-size: 24px; /* 글자 크기 조정 */
-                    color: midnightblue; /* 글자 색상 변경 */
-                    margin-bottom: 10px; /* 아래 여백 추가 */
-                }
-                .info-container p {
-                    font-size: 18px; /* 글자 크기 조정 */
-                    color: #333; /* 글자 색상 변경 */
-                    margin-bottom: 50px; /* 아래 여백 추가 */
-                }
-                .question {
-                    font-weight: bold;
-                    color: #333;
-                    background-color: #FCB9AA; /* 색상 박스의 배경색 */
-                    padding: 10px; /* 내부 여백 */
-                    border-radius: 10px;  /* 테두리를 둥글게 */
-                }
-                .answer {
-                    margin-left: 20px; /* 들여쓰기 추가 */
-                    color: #555; /* 답변 텍스트 색상 변경 */
-                    background-color: #A2E1DB; /* 답변 부분 색상 박스 배경색 */
-                    padding: 10px; /* 답변 부분 내부 여백 */
-                    border-radius: 10px; /* 테두리를 둥글게 */
-                }
-                footer {
-                    background-color: #f2f2f2;
-                    padding: 1px;
-                    text-align: center;
-                    position: fixed;
-                    bottom: 0;
-                    width: 100%;
-                }
-
-                .footer-text {
-                font-weight: bold;
-                }
-            </style>
-    </head>
-    <body>
-        <article>
-            <p style="font-size: 35px; font-weight: bold; color: #55CBCD; text-shadow: 1px 1px 1.2px midnightblue;">Baby Signing Time</p>
-            <div class="menu" style="font-weight: bold;">
-                <a class="button" href="{% url 'index' %}">Predicted</a>
-                <a class="button" href="{% url 'game'%}">Game</a>
-                <a class="button" href="{% url 'learning' %}">Learning</a>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/5_sRFGa3phE" allowfullscreen></iframe>
-            </div>
-            <div class="info-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">    
+</head>
+<body>
+    <article>
+        <p style="font-size: 35px; font-weight: bold; color: #55CBCD; text-shadow: 1px 1px 1.2px midnightblue;">Baby Signing Time</p>
+        <div class="menu">
+            <a class="button" href="{% url 'index' %}">Predicted</a>
+            <a class="button" href="{% url 'game' %}">Game</a>
+            <a class="button" href="{% url 'learning' %}">Learning</a>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/5_sRFGa3phE" allowfullscreen></iframe>
+        </div>
+        <div class="info-container">
+            <button id="englishBtn" onclick="showTranslatedText('english')">English</button>
+            <button id="koreanBtn" onclick="showTranslatedText('korean')">한국어</button>
+        </div>
+        <div id="translatedTextContainer" class="info-container"></div>
+    </article>
+    <script>
+        function showTranslatedText(language) {
+            const englishText = `
                 <h2>Sign Language Facts</h2>
-                <p class="question">Q: Do Deaf individuals have several ways to express loudness or emphasis in sign language? 청각 장애인은 수화로 소리를 크게 표현하거나 강조하는 여러 가지 방법이 있나요?</p>
-                <p class="answer">A: Exaggerated Movements:
-                    Deaf individuals use exaggerated movements when they want to speak loudly. Signs are made with larger, 
-                    more forceful movements to indicate that something is being said loudly or with strong emphasis. 
-                    This could involve signing with more vigorous arm and hand motions.</p>
+                <p class="question">Q: Do deaf people have various ways to express sound loudly or emphasize it in sign language?</p>
+                <p class="answer">A: Deaf people use exaggerated movements when they want to speak loudly. Signs are made larger and more powerful movements are used to indicate that something is being spoken loudly or strongly. This can include signing with more intense arm and hand movements.</p>
                 
-                <p class="question">Q: Sign language vs sign language 수어 VS 수화</p>
-                <p class="answer">A: Sign language communicates by reproducing words with your hands. In other words, it means talking with your hands.
-                    Sign language goes beyond hand-to-hand communication and means recognizing sign language as a language like Korean, Chinese, and Japanese.</p>
+                <p class="question">Q: Sign Language VS Sign</p>
+                <p class="answer">A: 'Sign Language' means 'speaking by moving hands' and Sign is a part of sign language. 'Sign Language' is the correct term for the totality of the language used by the deaf.</p>
+                
+                <p class="question">Q: Honorifics in Sign Language</p>
+                <p class="answer">A: In sign language, the same vocabulary can become informal or formal depending on the speaker's attitude. Therefore, it is up to the individual to decide their attitude. Sign language itself does not have separate informal and formal words.</p>
+                
+                <p class="question">Q: Right hand vs Left hand</p>
+                <p class="answer">A: There is no distinction. As long as the meaning is not affected by using the right hand. Both hands are used and explanations are given based on the individual’s perspective of left and right.</p>
+            `;
 
-                <p class="question">Q: Sign language honorifics 수어의 존댓말</p>
-                <p class="answer">A: In sign language, depending on the attitude of the speaker, the same vocabulary can become informal and formal
-                    That's why you decide what to do with your attitude
-                    You can express the sign language. There are no separate informal and formal words in the sign language itself.</p>
+            const koreanText = `
+                <h2>수어 상식</h2>
+                <p class="question">Q: 청각 장애인은 수화로 소리를 크게 표현하거나 강조하는 여러 가지 방법이 있나요?</p>
+                <p class="answer">A: 청각장애인들은 크게 말하고 싶을 때 과장된 움직임을 사용한다. 기호는 더 크게 만든다, 어떤 것이 크게 또는 강하게 강조되어 말하고 있음을 나타내기 위한 더 강력한 움직임. 이것은 더 격렬한 팔과 손 동작으로 서명하는 것을 포함할 수 있다.</p>
                 
-                <p class="question">Q: Right hand vs left hand 오른손 vs 왼손</p>
-                <p class="answer">A: No distinguished. If you do not affect the meaning of the right hand.Use both hands
-                    In addition, explain the left right side based on himself</p>
-            </div>
-        </article>
-        <footer>
-            <p class="footer-text">E.T.A</p>
-        </footer>
-    </body>
+                <p class="question">Q: 수어 VS 수화</p>
+                <p class="answer">A: 수화는 '손을 움직여 말한다'는 뜻을 가지고 있고 수화는 수어의 일부이고, 농인들이 사용하는 언어의 총체로선 '수어'라는 표현이 올바릅니다.</p>
+                
+                <p class="question">Q: 수어의 존댓말</p>
+                <p class="answer">A: 수화에서는 화자의 태도에 따라 동일한 어휘가 비공식적이고 형식적이 될 수 있습니다. 그렇기 때문에 표정과 태도를 통해 상대방이 나를 얼마나 존중하는지 구분합니다. 수화 자체에는 비공식적이고 형식적인 단어가 따로 없습니다.</p>
+                
+                <p class="question">Q: 오른손 vs 왼손</p>
+                <p class="answer">A: 구분이 없습니다. 오른손의 의미에 영향을 주지 않는 경우. 양손을 사용합니다 또한 자신을 기준으로 왼쪽 오른쪽을 설명합니다.</p>
+            `;
+
+            document.getElementById('translatedTextContainer').innerHTML = language === 'english' ? englishText : koreanText;
+        }
+
+        // 처음 로드될 때 한글 텍스트 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            showTranslatedText('korean');
+        });
+    </script>
+</body>
 </html>

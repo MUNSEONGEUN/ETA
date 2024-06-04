@@ -1,4 +1,7 @@
 @import url('reset.css');
+body{
+    background-color: #ECEAE4;
+}
 article {
     display: flex;
     flex-direction: column;

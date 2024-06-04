@@ -119,3 +119,23 @@ footer {
 .footer-text {
 font-weight: bold;
 }
+.info-container {
+    margin: 20px;
+    text-align: center;
+}
+.info-container button {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+}
+.info-container button:hover {
+    background-color: #ddd;
+}
+#translatedTextContainer {
+    margin-top: 20px;
+}
