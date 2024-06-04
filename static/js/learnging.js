@@ -1,6 +1,7 @@
 
 const category = document.querySelector(".category")
 const videos = document.querySelector(".video-area")
+const video = document.querySelector(".video")
 const group = document.querySelector(".button-group")
 const title = document.querySelector(".title")
 const json = {'phrases': {'How are you': '<iframe width="560" height="315" src="https://www.youtube.com/embed/1wvGNvkRtNY?si=riCtXF227ZPDxAJD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
@@ -67,11 +68,11 @@ const json = {'phrases': {'How are you': '<iframe width="560" height="315" src="
 
 category.addEventListener("click",(e)=>{
     if(!e.target.className.includes("menu"))  return
-    // videos.innerHTML = ""
+    console.log("clicked");    
     const menu = e.target.className.split(" ")[1]    
     const keys = Object.keys(json[menu])    
     const values  = json[menu]
-    
+    console.log(menu, keys);
     title.textContent = menu
 
     group.innerHTML = ""
@@ -79,16 +80,20 @@ category.addEventListener("click",(e)=>{
         const button = document.createElement("div")
         button.textContent = e
         button.setAttribute("class", "button")
-        group.insertAdjacentElement("beforeend",button)
+        group.appendChild(button)
 
     });
 })
 group.addEventListener("click",(e)=>{
     if(e.target.className != "button") return
-
+    console.log("click");
+    
+    const frame = document.querySelector("iframe")
     const title = document.querySelector(".title").textContent
-    const select = e.target.textContent
-
-    videos.insertAdjacentElement("beforeend",json[title][select]) 
+    const select = e.target.textContent    
+    console.log(json[title][select]);
+    // if(frame != null)    video.innerHTML = ""
+    console.log(video);
+    video.innerHTML = json[title][select]
 
 })

@@ -74,15 +74,21 @@ article {
 .video-area .button-group {
     display: flex;
     flex-direction: row;
+    margin-bottom: 30px;
 }
 .video-area .button-group div {
     margin: 0 15px;
     border: 1px solid black;
     border-radius: 3px;
     padding: 7px;
+    
     cursor: pointer;
 }
 .video-area iframe {
     margin-right: 20px;
     margin-bottom: 17px;
+    margin: auto;
+}
+.video {
+    display: flex;
 }
