@@ -64,6 +64,57 @@ article {
 .side-bar .category div:nth-child(10) {
     color: #d9b3ff ;
 }
+
+.side-bar .category div:nth-child(1):hover{
+    background-color: #ffb3b3;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(2):hover{
+    background-color: #ffd9b3;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(3):hover{
+    background-color: #ffffb3;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(4):hover{
+    background-color: #d9ffb3;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(5):hover{
+    background-color: #b3ffb3;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(6):hover{
+    background-color: #b3ffd9;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(7):hover{
+    background-color: #b3ffff;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(8):hover{
+    background-color: #b3d9ff;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(9):hover{
+    background-color: #b3b3ff;
+    color: #000;
+    transform: scale(1.05);
+}
+.side-bar .category div:nth-child(10):hover{
+    background-color: #d9b3ff;
+    color: #000;
+    transform: scale(1.05);
+}
 .side-bar .category .fa-solid{
     margin-right: 7px;
 }
@@ -84,6 +135,11 @@ article {
     
     cursor: pointer;
 }
+.clicked{
+    background-color: #71c5d0;
+	
+	color: white;
+}
 .video-area iframe {
     margin-right: 20px;
     margin-bottom: 17px;
@@ -92,3 +148,4 @@ article {
 .video {
     display: flex;
 }
+
