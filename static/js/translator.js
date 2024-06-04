@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let category = 'alphabet'; // 기본 카테고리 설정
     let lastPrediction = '';
     let samePredictionCount = 0;
-    const minPredictionCount = 10; // 같은 단어로 인식된 최소 횟수
+    const minPredictionCount = 30; // 같은 단어로 인식된 최소 횟수
+    const alphabetThreshold = 0.25; // 알파벳 임계값 25%
+    const otherThreshold = 0.5; // 다른 카테고리 임계값 50%
 
     // Mediapipe 설정
     const hands = new Hands({locateFile: (file) => {
@@ -94,24 +96,39 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             const finalPrediction = data.final_prediction;
-            document.getElementById('word').innerText = finalPrediction; // 예측된 단어만 표시
+            const predictionProb = data.probability;
+            const threshold = (category === 'alphabet') ? alphabetThreshold : otherThreshold;
 
-            if (finalPrediction === lastPrediction) {
-                samePredictionCount++;
-            } else {
-                samePredictionCount = 0;
-                lastPrediction = finalPrediction;
-            }
+            if (finalPrediction !== 'Try Again' && predictionProb > threshold) { // "Try Again"일 때는 텍스트를 추가하지 않음
+                document.getElementById('word').innerText = finalPrediction; // 예측된 단어만 표시
 
-            if (samePredictionCount >= minPredictionCount) {
-                document.getElementById('word').innerText = finalPrediction; // 예측된 단어를 업데이트
-                document.getElementById('text-input').value += finalPrediction + ' '; // 예측된 단어를 텍스트 입력란에 추가
-                samePredictionCount = 0; // Reset count after updating result
+                if (finalPrediction === lastPrediction) {
+                    samePredictionCount++;
+                } else {
+                    samePredictionCount = 0;
+                    lastPrediction = finalPrediction;
+                }
+
+                if (samePredictionCount >= minPredictionCount) {
+                    handlePrediction(finalPrediction); // 예측된 알파벳을 텍스트 입력란에 추가 또는 기능 실행
+                    samePredictionCount = 0; // Reset count after updating result
+                }
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
+    }
+
+    function handlePrediction(prediction) {
+        const textInput = document.getElementById('text-input');
+        if (prediction === 'space') {
+            textInput.value += ' ';
+        } else if (prediction === 'del') {
+            textInput.value = textInput.value.slice(0, -1);
+        } else {
+            textInput.value += prediction;
+        }
     }
 
     window.setMode = function(mode) {
