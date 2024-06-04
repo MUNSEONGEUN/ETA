@@ -1,6 +1,6 @@
 @import url(reset.css);
 body {
-    background: linear-gradient(#FCB9AA , #ECEAE4 95%);
+    background: white;
 }
 article {
     margin-top: 15vh;
@@ -12,7 +12,9 @@ article {
 .menu {
     display: flex;
     justify-content: space-around;
+    gap: 10px;
     width: 70%;
+    margin-top: 20px;
 }
 /* .menu:after {
     content: "";
@@ -25,7 +27,7 @@ article {
     position: relative;
     text-align: center;
 
-    border: #000 1px solid;
+    border: 3px solid black;
     border-radius: 20px;
     margin-right: 20px;
     margin-top: 30px;
