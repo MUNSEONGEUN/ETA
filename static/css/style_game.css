@@ -1,6 +1,6 @@
 /* 전체적인 레이아웃 및 폰트 설정 */
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'comic-sans';
     text-align: center;
     padding: 20px;
     transition: background-color 0.5s ease;

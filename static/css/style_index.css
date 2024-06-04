@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'comic-sans';
+    background-color: #ECEAE4;
     text-align: center;
     padding: 20px;
     transition: background-color 0.5s ease;
