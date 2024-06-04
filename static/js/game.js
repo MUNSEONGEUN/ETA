@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch(url);
             const data = await response.json();
-            words[mode] = data[mode];
+            words[mode] = data[mode].filter(word => word !== 'del' && word !== 'space'); // 'del'과 'space' 필터링
             console.log(`Fetched ${mode} labels:`, words[mode]);
         } catch (error) {
             console.error(`Error fetching ${mode} labels:`, error);
