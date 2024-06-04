@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const minPredictionCount = 30; // 같은 단어로 인식된 최소 횟수
     const alphabetThreshold = 0.25; // 알파벳 임계값 25%
     const otherThreshold = 0.5; // 다른 카테고리 임계값 50%
+    let cursorVisible = true; // 커서 가시성 상태
 
     // Mediapipe 설정
     const hands = new Hands({locateFile: (file) => {
@@ -122,20 +123,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handlePrediction(prediction) {
         const textInput = document.getElementById('text-input');
+        let textValue = textInput.value.replace('│', ''); // 기존 커서 제거
         if (prediction === 'space') {
-            textInput.value += ' ';
+            textValue += ' ';
         } else if (prediction === 'del') {
-            textInput.value = textInput.value.slice(0, -1);
+            textValue = textValue.slice(0, -1);
         } else {
-            textInput.value += prediction;
+            textValue += prediction;
         }
+        textInput.value = textValue + (cursorVisible ? '│' : ''); // 새로운 커서 추가
     }
+
+    // 커서 깜박임 설정
+    setInterval(() => {
+        const textInput = document.getElementById('text-input');
+        cursorVisible = !cursorVisible;
+        let textValue = textInput.value.replace('│', '');
+        if (cursorVisible) {
+            textInput.value = textValue + '│';
+        } else {
+            textInput.value = textValue;
+        }
+    }, 650); // 650ms 간격
 
     window.setMode = function(mode) {
         category = mode;
         samePredictionCount = 0;
         lastPrediction = '';
         document.getElementById('word').innerText = ''; // 현재 예측된 단어 초기화
-        document.getElementById('text-input').value = ''; // 텍스트 입력란 초기화
+        document.getElementById('text-input').value = '│'; // 텍스트 입력란 초기화
+        cursorVisible = true; // 커서 초기 상태 설정
+
+        // 모든 버튼의 활성 상태 해제
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // 현재 모드 버튼에 활성 상태 추가
+        document.querySelector(`.category-button[onclick="setMode('${mode}')"]`).classList.add('active');
     }
 });
