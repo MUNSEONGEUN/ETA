@@ -1,10 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const gameCanvas = document.getElementById('gameCanvas');
     const gameCtx = gameCanvas.getContext('2d');
+    const scoreElement = document.getElementById('score');
+    const livesElement = document.getElementById('lives');
+    const levelElement = document.getElementById('level');
+    
+    let score = 0;
+    let lives = 3;
+    let level = 1;
+    let fallSpeed = 2;
+    let levelUpTime = 10000; // 10 seconds per level
+
     const words = {
         'alphabet': [],
         'numbers': [],
-        'words': ["Hello", "No", "Perfect", "Yes", "cry", "iloveyou", "korea", "walk", "why"]
+        'words': []
     };
     let fallingWords = [];
     let currentMode = 'words';
@@ -15,12 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         let url = '';
         if (mode === 'alphabet') url = '/recognition/get_alphabet_labels/';
         else if (mode === 'numbers') url = '/recognition/get_number_labels/';
-        
+        else if (mode === 'words') url = '/recognition/get_word_labels/';
+
         try {
             const response = await fetch(url);
             const data = await response.json();
             words[mode] = data[mode];
-            console.log(`Fetched ${mode} labels:`, words[mode]); // 디버깅 메시지
+            console.log(`Fetched ${mode} labels:`, words[mode]);
         } catch (error) {
             console.error(`Error fetching ${mode} labels:`, error);
         }
@@ -37,43 +48,84 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFallingWords() {
         gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         fallingWords.forEach((wordObj, index) => {
-            wordObj.y += 2; // 단어가 떨어지는 속도
+            wordObj.y += fallSpeed;
             gameCtx.font = '20px Arial';
             gameCtx.fillStyle = 'black';
             gameCtx.fillText(wordObj.word, wordObj.x, wordObj.y);
             if (wordObj.y > gameCanvas.height) {
-                fallingWords.splice(index, 1); // 화면을 벗어난 단어 제거
+                createExplosion(wordObj.x, gameCanvas.height - 20, wordObj.word);
+                fallingWords.splice(index, 1);
+                lives--;
+                livesElement.innerText = `Lives: ${lives}`;
+                if (lives <= 0) {
+                    gameOver();
+                }
             }
+        });
+    }
+
+    function createExplosion(x, y, word) {
+        const wordElement = document.createElement('div');
+        wordElement.textContent = word;
+        wordElement.style.position = 'absolute';
+        wordElement.style.left = x + 'px';
+        wordElement.style.top = y + 'px';
+        wordElement.classList.add('explode');
+        document.getElementById('game-area').appendChild(wordElement);
+
+        wordElement.addEventListener('animationend', () => {
+            wordElement.remove();
         });
     }
 
     function startGame() {
-        setInterval(createFallingWord, 2000); // 2초마다 새로운 단어 생성
-        setInterval(updateFallingWords, 30); // 30ms마다 단어 위치 업데이트
+        setInterval(createFallingWord, 2000);
+        setInterval(updateFallingWords, 30);
+        setInterval(levelUp, levelUpTime);
     }
 
     function checkCollision(predictedWord) {
-        console.log(`Checking collision for: ${predictedWord}`); // 디버깅 메시지
+        console.log(`Checking collision for: ${predictedWord}`);
         fallingWords.forEach((wordObj, index) => {
-            console.log(`Comparing with: ${wordObj.word}`); // 디버깅 메시지
-            // predictedWord와 wordObj.word를 문자열로 변환하여 비교
+            console.log(`Comparing with: ${wordObj.word}`);
             if (String(wordObj.word) === String(predictedWord) && wordObj.y < gameCanvas.height - 50) {
-                fallingWords.splice(index, 1); // 단어 맞추기
-                console.log(`Removed word: ${wordObj.word}`); // 디버깅 메시지
+                createExplosion(wordObj.x, wordObj.y, wordObj.word);
+                fallingWords.splice(index, 1);
+                score += 10;
+                scoreElement.innerText = `Score: ${score}`;
+                console.log(`Removed word: ${wordObj.word}`);
             }
         });
     }
-    
+
+    function resetGame() {
+        score = 0;
+        lives = 3;
+        level = 1;
+        fallSpeed = 2;
+        scoreElement.innerText = `Score: ${score}`;
+        livesElement.innerText = `Lives: ${lives}`;
+        levelElement.innerText = `Level: ${level}`;
+        fallingWords = [];
+        samePredictionCount = 0;
+    }
+
+    function levelUp() {
+        level++;
+        fallSpeed += 1; // Increase fall speed
+        levelElement.innerText = `Level: ${level}`;
+        console.log(`Level up! Current level: ${level}, Fall speed: ${fallSpeed}`);
+    }
+
+    function gameOver() {
+        alert(`Game Over\nFinal Score: ${score}\nFinal Level: ${level}`);
+        resetGame();
+    }
 
     window.setMode = function(mode) {
         currentMode = mode;
         fetchLabels(mode);
-        fallingWords = [];
-        samePredictionCount = 0;
-        const predictedWordElement = document.getElementById('predicted-word');
-        if (predictedWordElement) {
-            predictedWordElement.innerText = ''; // 예측된 단어 초기화
-        }
+        resetGame();
     };
 
     document.querySelector('.button-container').onclick = (event) => {
@@ -84,14 +136,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startGame();
 
-    // Mediapipe 설정
-    const video = document.createElement('video'); // 비디오 요소 생성
+    const video = document.createElement('video');
     const canvas = document.getElementById('outputCanvas');
     const ctx = canvas.getContext('2d');
     const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-    video.style.display = 'none'; // 비디오 요소 숨기기
-    document.body.appendChild(video); // 비디오 요소 추가
+    video.style.display = 'none';
+    document.body.appendChild(video);
 
     const hands = new Hands({locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
@@ -172,17 +223,18 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             const finalPrediction = data.final_prediction;
-            console.log(`Predicted word: ${finalPrediction}`); // 디버깅 메시지
-            if (data.probabilities[0] > 0.5) {
+            console.log(`Predicted word: ${finalPrediction}`);
+            if (finalPrediction !== 'Try Again') {
                 samePredictionCount++;
-            } 
-            if (samePredictionCount >= minPredictionCount) {
-                checkCollision(finalPrediction);
-                samePredictionCount = 0;
+                if (samePredictionCount >= minPredictionCount) {
+                    checkCollision(finalPrediction);
+                    samePredictionCount = 0;
+                }
             }
+
             const predictedWordElement = document.getElementById('predicted-word');
             if (predictedWordElement) {
-                predictedWordElement.innerText = finalPrediction; // 예측된 단어 업데이트
+                predictedWordElement.innerText = finalPrediction;
             }
         })
         .catch(error => {
