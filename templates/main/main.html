@@ -1,21 +1,116 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-    <article>
-        <h1>E. T. A</h1>
-        <p>어떤 문구가 들어가면 좋을까..</p>
-        <div class="menu">
-            <div>Predicted</div>
-            <div>Game</div>
-            <div>Learing</div>
-        </div>
-    </article>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+            <style>
+                
+                .footer-text {
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: bold;
+                    color: #55CBCD;
+                    text-shadow: 1px 1px 2px #000000;
+                    margin: 20px 0;
+                }
+                .video-container {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
+                .video-container iframe {
+                    width: 80vw; /* 화면 너비의 80% */
+                    height: 45vw; /* 화면 너비의 45% */
+                    max-width: 800px;
+                    max-height: 450px;
+                    border: none;
+                }
+                .info-container {
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    margin: 20px auto;
+                    width: 80vw;
+                    max-width: 800px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+                .info-container h2 {
+                    font-size: 24px; /* 글자 크기 조정 */
+                    color: midnightblue; /* 글자 색상 변경 */
+                    margin-bottom: 10px; /* 아래 여백 추가 */
+                }
+                .info-container p {
+                    font-size: 18px; /* 글자 크기 조정 */
+                    color: #333; /* 글자 색상 변경 */
+                    margin-bottom: 50px; /* 아래 여백 추가 */
+                }
+                .question {
+                    font-weight: bold;
+                    color: #333;
+                    background-color: #FCB9AA; /* 색상 박스의 배경색 */
+                    padding: 10px; /* 내부 여백 */
+                    border-radius: 10px;  /* 테두리를 둥글게 */
+                }
+                .answer {
+                    margin-left: 20px; /* 들여쓰기 추가 */
+                    color: #555; /* 답변 텍스트 색상 변경 */
+                    background-color: #A2E1DB; /* 답변 부분 색상 박스 배경색 */
+                    padding: 10px; /* 답변 부분 내부 여백 */
+                    border-radius: 10px; /* 테두리를 둥글게 */
+                }
+                footer {
+                    background-color: #f2f2f2;
+                    padding: 1px;
+                    text-align: center;
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                }
+
+                .footer-text {
+                font-weight: bold;
+                }
+            </style>
+    </head>
+    <body>
+        <article>
+            <p style="font-size: 35px; font-weight: bold; color: #55CBCD; text-shadow: 1px 1px 1.2px midnightblue;">Baby Signing Time</p>
+            <div class="menu" style="font-weight: bold;">
+                <a href="{% url 'index' %}">Predicted</a>
+                <a href="{% url 'game'%}">Game</a>
+                <a href="learning.html">Learning</a>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/5_sRFGa3phE" allowfullscreen></iframe>
+            </div>
+            <div class="info-container">
+                <h2>Sign Language Facts</h2>
+                <p class="question">Q: Do Deaf individuals have several ways to express loudness or emphasis in sign language? 청각 장애인은 수화로 소리를 크게 표현하거나 강조하는 여러 가지 방법이 있나요?</p>
+                <p class="answer">A: Exaggerated Movements:
+                    Deaf individuals use exaggerated movements when they want to speak loudly. Signs are made with larger, 
+                    more forceful movements to indicate that something is being said loudly or with strong emphasis. 
+                    This could involve signing with more vigorous arm and hand motions.</p>
+                
+                <p class="question">Q: Sign language vs sign language 수어 VS 수화</p>
+                <p class="answer">A: Sign language communicates by reproducing words with your hands. In other words, it means talking with your hands.
+                    Sign language goes beyond hand-to-hand communication and means recognizing sign language as a language like Korean, Chinese, and Japanese.</p>
+
+                <p class="question">Q: Sign language honorifics 수어의 존댓말</p>
+                <p class="answer">A: In sign language, depending on the attitude of the speaker, the same vocabulary can become informal and formal
+                    That's why you decide what to do with your attitude
+                    You can express the sign language. There are no separate informal and formal words in the sign language itself.</p>
+                
+                <p class="question">Q: Right hand vs left hand 오른손 vs 왼손</p>
+                <p class="answer">A: No distinguished. If you do not affect the meaning of the right hand.Use both hands
+                    In addition, explain the left right side based on himself</p>
+            </div>
+        </article>
+        <footer>
+            <p class="footer-text">E.T.A</p>
+        </footer>
+    </body>
 </html>
