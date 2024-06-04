@@ -3,23 +3,20 @@ from django.http import JsonResponse
 import numpy as np
 import json
 import pickle
-from pathlib import Path
+import os
+from django.conf import settings
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
-# BASE_DIR 설정
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# 피클 파일 경로 설정
 # 피클 파일 경로 설정
 model_paths = {
-    'alphabet': BASE_DIR / 'model' / 'alphabet_model.pkl',
-    'numbers': BASE_DIR / 'model' / 'num_model.pkl',
-    'words': BASE_DIR / 'model' / 'word_model.pkl'
+    'alphabet': os.path.join(settings.BASE_DIR, 'model', 'alphabet_model.pkl'),
+    'numbers': os.path.join(settings.BASE_DIR, 'model', 'num_model.pkl'),
+    'words': os.path.join(settings.BASE_DIR, 'model', 'word_model.pkl')
 }
 label_encoder_paths = {
-    'alphabet': BASE_DIR / 'pkl' / 'alphabet_label_encoder.pkl',
-    'numbers': BASE_DIR / 'pkl' / 'num_label_encoder.pkl',
-    'words': BASE_DIR / 'pkl' / 'word_label_encoder.pkl'
+    'alphabet': os.path.join(settings.BASE_DIR, 'pkl', 'alphabet_label_encoder.pkl'),
+    'numbers': os.path.join(settings.BASE_DIR, 'pkl', 'num_label_encoder.pkl'),
+    'words': os.path.join(settings.BASE_DIR, 'pkl', 'word_label_encoder.pkl')
 }
 
 # 모델과 라벨 인코더 로드
@@ -53,8 +50,7 @@ def predict_sign(request):
             landmarks = np.array(body['landmarks']).flatten()
             category = body['category']
 
-            # 한 손의 랜드마크만 사용하도록 수정
-            if len(landmarks) == 126:  # 두 손 랜드마크가 있을 경우 첫 번째 손 랜드마크만 사용
+            if len(landmarks) == 126:
                 landmarks = landmarks[:63]
             elif len(landmarks) != 63:
                 return JsonResponse({'error': 'Invalid number of landmarks'}, status=400)
@@ -71,10 +67,8 @@ def predict_sign(request):
 
             predicted_label = label_encoder.inverse_transform([model.predict(landmarks)[0]])[0]
 
-            # 가중치 설정
             weights = {'precision': 0.25, 'recall': 0.25, 'f1': 0.25, 'accuracy': 0.25}
 
-            # 실제 라벨과 예측 라벨을 같다고 가정 (실제 사용 시 실제 라벨 필요)
             y_true = [predicted_label]
             y_pred = [predicted_label]
 
@@ -100,3 +94,22 @@ def predict_sign(request):
             return JsonResponse({'error': 'Prediction error', 'details': error_message}, status=500)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+def get_word_labels(request):
+    word_labels = list(label_encoders['words'].classes_)
+    return JsonResponse({'words': word_labels})
+
+def get_alphabet_labels(request):
+    alphabet_labels = list(label_encoders['alphabet'].classes_)
+    return JsonResponse({'alphabet': alphabet_labels})
+
+def get_number_labels(request):
+    try:
+        number_labels = label_encoders['numbers'].classes_
+        number_labels = [int(label) for label in number_labels]  # Convert numpy int64 to Python int
+        return JsonResponse({'numbers': number_labels})
+    except Exception as e:
+        import traceback
+        error_message = traceback.format_exc()
+        return JsonResponse({'error': 'Error fetching number labels', 'details': error_message}, status=500)
+    
