@@ -40,3 +40,68 @@ article {
     display: block;
     padding-bottom: 100%;
 }
+.footer-text {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #55CBCD;
+    text-shadow: 1px 1px 2px #000000;
+    margin: 20px 0;
+}
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.video-container iframe {
+    width: 80vw; /* 화면 너비의 80% */
+    height: 45vw; /* 화면 너비의 45% */
+    max-width: 800px;
+    max-height: 450px;
+    border: none;
+}
+.info-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80vw;
+    max-width: 800px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.info-container h2 {
+    font-size: 24px; /* 글자 크기 조정 */
+    color: midnightblue; /* 글자 색상 변경 */
+    margin-bottom: 10px; /* 아래 여백 추가 */
+}
+.info-container p {
+    font-size: 18px; /* 글자 크기 조정 */
+    color: #333; /* 글자 색상 변경 */
+    margin-bottom: 50px; /* 아래 여백 추가 */
+}
+.question {
+    font-weight: bold;
+    color: #333;
+    background-color: #FCB9AA; /* 색상 박스의 배경색 */
+    padding: 10px; /* 내부 여백 */
+    border-radius: 10px;  /* 테두리를 둥글게 */
+}
+.answer {
+    margin-left: 20px; /* 들여쓰기 추가 */
+    color: #555; /* 답변 텍스트 색상 변경 */
+    background-color: #A2E1DB; /* 답변 부분 색상 박스 배경색 */
+    padding: 10px; /* 답변 부분 내부 여백 */
+    border-radius: 10px; /* 테두리를 둥글게 */
+}
+footer {
+    background-color: #f2f2f2;
+    padding: 1px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-text {
+font-weight: bold;
+}
