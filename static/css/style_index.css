@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'comic-sans';
+    background-color: #ECEAE4;
     text-align: center;
     padding: 20px;
     transition: background-color 0.5s ease;
@@ -65,6 +66,12 @@ canvas {
     background-color: #5a9bd4; /* 밝은 SteelBlue 색상 */
 }
 
+.category-button.active {
+    background-color: #87CEFA; /* 더 밝은 색상 (LightSkyBlue) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* 강조된 그림자 */
+}
+
+
 #word {
     font-weight: bold;
     color: #a2e1db; /* 밝은 청록색 */
@@ -79,4 +86,9 @@ canvas {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 16px;
     margin-bottom: 20px; /* 추가하여 텍스트 입력란과 카메라 간 간격 확보 */
+    caret-color: black; /* 커서 색상 설정 */
+    white-space: pre-wrap; /* 줄 바꿈을 포함한 공백 유지 */
+    outline: none; /* 포커스 시 외곽선 제거 */
+    overflow: hidden; /* 스크롤 바 숨기기 */
+    resize: none; /* 크기 조정 비활성화 */
 }
