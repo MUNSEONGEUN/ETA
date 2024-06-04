@@ -1,3 +1,32 @@
+/* 게임 정보 스타일 */
+#game-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #ff4500;
+    display: flex;
+    gap: 20px;
+}
+
+/* 전체적인 레이아웃 및 폰트 설정 */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    padding: 20px;
+    transition: background-color 0.5s ease;
+    position: relative;
+    background-color: #ffefd5;
+}
+
+h1 {
+    color: #ff6347;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #ffa07a;
+}
+
+/* 모드에 따른 배경 스타일 */
 body.alphabet-mode {
     background-color: #ECEAE4;
     background-image: linear-gradient(135deg, #FFDBCC 25%, transparent 25%), linear-gradient(225deg, #FFDBCC 25%, transparent 25%), linear-gradient(45deg, #FFDBCC 25%, transparent 25%), linear-gradient(315deg, #FFDBCC 25%, #ECEAE4 25%);
@@ -17,55 +46,45 @@ body.numbers-mode {
 body.words-mode {
     background-color: #E4F1E4;
     background-image: linear-gradient(135deg, #CCFFCC 25%, transparent 25%), linear-gradient(225deg, #CCFFCC 25%, transparent 25%), linear-gradient(45deg, #CCFFCC 25%, transparent 25%), linear-gradient(315deg, #CCFFCC 25%, #E4F1E4 25%);
-    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-position: 10px 0, 10px 10px, 0 0, 0 0;
     background-size: 20px 20px;
     background-repeat: repeat;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    transition: background-color 0.5s ease;
-    position: relative; 
-}
-
-h1 {
-    color: #333;
-}
-
+/* 게임 화면 및 카메라 영역 스타일 */
 .wrapper {
     position: relative;
     width: 100%;
     height: 640px;
     display: flex;
-    justify-content: center; /* 가로 가운데 정렬 */
-    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center;
+    align-items: center;
 }
 
 #game-area {
-    width: 800px; /* 고정 너비 */
-    height: 600px; /* 고정 높이 */
+    width: 800px;
+    height: 600px;
     position: relative;
     margin: 0 auto;
-    border: 2px solid #55cbcd;
-    border-radius: 10px;
+    border: 3px solid #ffb6c1;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fffaf0;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
 }
 
 #camera-area {
     position: absolute;
-    bottom: 10px;
+    bottom: 200px;
     right: 10px;
     width: 160px;
     height: 120px;
 }
 
 canvas {
-    border: 5px solid #444;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 5px solid #ffa07a;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 160, 122, 0.5);
 }
 
 #outputCanvas {
@@ -73,26 +92,48 @@ canvas {
     height: 100%;
 }
 
-#result, #predicted-word {
+/* 예측된 단어 및 버튼 스타일 */
+#predicted-word {
     margin-top: 20px;
-    font-size: 18px;
-    color: #333;
+    font-size: 1.5em;
+    color: #ff4500;
 }
 
 .button-container {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .category-button {
     margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 25px;
+    font-size: 1.2em;
     cursor: pointer;
+    background-color: #ffdab9;
+    border: 2px solid #ff4500;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-#text-input {
-    margin-top: 20px;
+.category-button:hover {
+    background-color: #ff7f50;
+    transform: scale(1.1);
+}
+
+/* 터지는 애니메이션 정의 */
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.explode {
+    animation: explode 0.5s forwards;
+    color: red;
     font-size: 24px;
-    width: 80%;
-    padding: 10px;
+    font-weight: bold;
 }

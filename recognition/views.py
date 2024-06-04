@@ -61,30 +61,16 @@ def predict_sign(request):
             label_encoder = label_encoders[category]
 
             prediction_probs = model.predict_proba(landmarks)
-            top_indices = np.argsort(prediction_probs[0])[-2:][::-1]
-            top_classes = label_encoder.inverse_transform(top_indices)
-            top_probs = prediction_probs[0][top_indices]
+            top_index = np.argmax(prediction_probs[0])
+            top_class = label_encoder.inverse_transform([top_index])[0]
+            top_prob = prediction_probs[0][top_index]
 
-            predicted_label = label_encoder.inverse_transform([model.predict(landmarks)[0]])[0]
-
-            weights = {'precision': 0.25, 'recall': 0.25, 'f1': 0.25, 'accuracy': 0.25}
-
-            y_true = [predicted_label]
-            y_pred = [predicted_label]
-
-            precision, recall, f1, accuracy = calculate_scores(y_true, y_pred)
-            combined_score = (weights['precision'] * precision + 
-                              weights['recall'] * recall + 
-                              weights['f1'] * f1 + 
-                              weights['accuracy'] * accuracy)
-
-            final_prediction = predicted_label if combined_score > 0.5 else 'Uncertain'
+            threshold = 0.5  # 예측 신뢰도 임계값
+            final_prediction = top_class if top_prob > threshold else 'Try Again'
 
             return JsonResponse({
-                'classes': [str(cls) for cls in top_classes],
-                'probabilities': [float(prob) for prob in top_probs],
-                'predicted_label': str(predicted_label),
-                'combined_score': float(combined_score),
+                'predicted_label': str(top_class),
+                'probability': float(top_prob),
                 'final_prediction': str(final_prediction)
             })
         except Exception as e:

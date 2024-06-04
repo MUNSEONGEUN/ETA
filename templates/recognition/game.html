@@ -10,7 +10,7 @@
 </head>
 <body id="body">
     <h1>Sign Language Game</h1>
-    <div id="predicted-word">Prediction: </div> <!-- 예측된 단어를 표시할 요소 추가 -->
+    <div id="predicted-word">Prediction: </div>
     <div class="button-container">
         <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
         <button class="category-button" onclick="setMode('numbers')">Numbers</button>
@@ -18,6 +18,11 @@
     </div>
     <div class="wrapper">
         <div id="game-area">
+            <div id="game-info">
+                <span id="score">Score: 0</span>
+                <span id="lives">Lives: 3</span>
+                <span id="level">Level: 1</span> <!-- 여기가 유일한 레벨 표시 -->
+            </div>
             <canvas id="gameCanvas" width="800" height="600"></canvas>
         </div>
     </div>
