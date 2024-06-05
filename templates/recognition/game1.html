@@ -1,15 +1,15 @@
-
-{% extends 'base.html' %}
-{% load static %}
-{% block head %}
-    <title>Sign Language Game</title>    
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Language Game</title>
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_game.css' %}">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-{% endblock %}
-{% block content %}
+</head>
+<body id="body">
     <h1>Sign Language Game</h1>
     <div id="predicted-word">Prediction: </div>
     <div class="button-container">
@@ -36,7 +36,6 @@
     </div>
     
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-{% endblock %}
-{% block scripts %}
     <script src="{% static 'js/game.js' %}"></script>
-{% endblock %}
+</body>
+</html>

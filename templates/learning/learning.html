@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
     <link rel="stylesheet" href="{% static 'css/learnging.css' %}">
-    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-</head>
-<body>
-    <div class="sticky">        
-        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
-        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
-        <div class="sticky-button">
-            <a class="icon" href="/"><i class="fa-solid fa-house"></i></a>
-        </div>
-    </div>
+{% endblock%}
+{% block content %}
     <article>
         <div class="title">Select category</div>
         <div class="content">            
@@ -42,8 +29,8 @@
         </div>
 
     </article>
-    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
-    
+{% endblock%}
+{% block scripts %}
+    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>    
     <script src="{% static 'js/learnging.js' %}"></script>
-</body>
-</html>
+{% endblock %}
