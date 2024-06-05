@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctx = canvas.getContext('2d');
     const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-    let category = 'alphabet'; // 기본 카테고리 설정
+    let category = 'alphabet';
     let lastPrediction = '';
     let samePredictionCount = 0;
-    const minPredictionCount = 30; // 같은 단어로 인식된 최소 횟수
-    const alphabetThreshold = 0.25; // 알파벳 임계값 25%
-    const otherThreshold = 0.5; // 다른 카테고리 임계값 50%
-    let cursorVisible = true; // 커서 가시성 상태
+    const minPredictionCount = 30;
+    const alphabetThreshold = 0.2;
+    const otherThreshold = 0.5;
+    let cursorVisible = true;
 
-    // Mediapipe 설정
     const hands = new Hands({locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
     }});
@@ -47,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawVideoAndResults() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
-        ctx.scale(-1, 1); // 미러링 효과
-        ctx.translate(-canvas.width, 0); // 좌표 변환
+        ctx.scale(-1, 1);
+        ctx.translate(-canvas.width, 0);
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         ctx.restore();
 
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function drawBoundingBox(ctx, landmarks, {color, lineWidth}) {
-        const xValues = landmarks.map(landmark => canvas.width - landmark.x * canvas.width); // 미러링된 x 좌표
+        const xValues = landmarks.map(landmark => canvas.width - landmark.x * canvas.width);
         const yValues = landmarks.map(landmark => landmark.y * canvas.height);
 
         const minX = Math.min(...xValues);
@@ -100,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const predictionProb = data.probability;
             const threshold = (category === 'alphabet') ? alphabetThreshold : otherThreshold;
 
-            if (finalPrediction !== 'Try Again' && predictionProb > threshold) { // "Try Again"일 때는 텍스트를 추가하지 않음
-                document.getElementById('word').innerText = finalPrediction; // 예측된 단어만 표시
+            if (finalPrediction !== 'Try Again' && predictionProb > threshold) {
+                document.getElementById('word').innerText = finalPrediction;
 
                 if (finalPrediction === lastPrediction) {
                     samePredictionCount++;
@@ -111,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (samePredictionCount >= minPredictionCount) {
-                    handlePrediction(finalPrediction); // 예측된 알파벳을 텍스트 입력란에 추가 또는 기능 실행
-                    samePredictionCount = 0; // Reset count after updating result
+                    handlePrediction(finalPrediction);
+                    samePredictionCount = 0;
                 }
             }
         })
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handlePrediction(prediction) {
         const textInput = document.getElementById('text-input');
-        let textValue = textInput.value.replace('│', ''); // 기존 커서 제거
+        let textValue = textInput.value.replace('│', '');
         if (prediction === 'space') {
             textValue += ' ';
         } else if (prediction === 'del') {
@@ -131,10 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             textValue += prediction;
         }
-        textInput.value = textValue + (cursorVisible ? '│' : ''); // 새로운 커서 추가
+        textInput.value = textValue + (cursorVisible ? '│' : '');
     }
 
-    // 커서 깜박임 설정
     setInterval(() => {
         const textInput = document.getElementById('text-input');
         cursorVisible = !cursorVisible;
@@ -144,22 +142,20 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             textInput.value = textValue;
         }
-    }, 650); // 650ms 간격
+    }, 650);
 
     window.setMode = function(mode) {
         category = mode;
         samePredictionCount = 0;
         lastPrediction = '';
-        document.getElementById('word').innerText = ''; // 현재 예측된 단어 초기화
-        document.getElementById('text-input').value = '│'; // 텍스트 입력란 초기화
-        cursorVisible = true; // 커서 초기 상태 설정
+        document.getElementById('word').innerText = '';
+        document.getElementById('text-input').value = '│';
+        cursorVisible = true;
 
-        // 모든 버튼의 활성 상태 해제
         document.querySelectorAll('.category-button').forEach(button => {
             button.classList.remove('active');
         });
 
-        // 현재 모드 버튼에 활성 상태 추가
         document.querySelector(`.category-button[onclick="setMode('${mode}')"]`).classList.add('active');
     }
 });

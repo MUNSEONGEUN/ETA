@@ -7,19 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const startButtonContainer = document.getElementById('start-button-container');
     const startButton = document.getElementById('start-button');
 
-    const GAME_SETTINGS = {
-        initialLives: 3,
-        initialFallSpeed: 2,
-        levelUpTime: 10000, // 10 seconds per level
-        minPredictionCount: 10
-    };
-
     let score = 0;
-    let lives = GAME_SETTINGS.initialLives;
+    let lives = 3;
     let level = 1;
-    let fallSpeed = GAME_SETTINGS.initialFallSpeed;
-    let gameInterval, updateInterval, levelUpInterval;
-    let samePredictionCount = 0;
+    let fallSpeed = 2;
+    let levelUpTime = 10000; // 10 seconds per level
+    let gameInterval;
+    let updateInterval;
+    let levelUpInterval;
 
     const words = {
         'alphabet': [],
@@ -27,20 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
         'words': []
     };
     let fallingWords = [];
-    let currentMode = 'words';
+    let currentMode = null;
+    let samePredictionCount = 0;
+    const minPredictionCount = 10;
 
-    // 초기 설정에서 버튼을 명시적으로 보이게 설정
-    startButtonContainer.style.display = 'flex';
+    // 초기 설정에서 버튼을 명시적으로 숨김
+    startButtonContainer.style.display = 'none';
 
     async function fetchLabels(mode) {
-        const urls = {
-            'alphabet': '/recognition/get_alphabet_labels/',
-            'numbers': '/recognition/get_number_labels/',
-            'words': '/recognition/get_word_labels/'
-        };
+        let url = '';
+        if (mode === 'alphabet') url = '/recognition/get_alphabet_labels/';
+        else if (mode === 'numbers') url = '/recognition/get_number_labels/';
+        else if (mode === 'words') url = '/recognition/get_word_labels/';
 
         try {
-            const response = await fetch(urls[mode]);
+            const response = await fetch(url);
             const data = await response.json();
             words[mode] = data[mode].filter(word => word !== 'del' && word !== 'space'); // 'del'과 'space' 필터링
             console.log(`Fetched ${mode} labels:`, words[mode]);
@@ -61,13 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
         gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         fallingWords.forEach((wordObj, index) => {
             wordObj.y += fallSpeed;
-            gameCtx.font = '20px Arial';
+            gameCtx.font = '20px Comic Sans MS';
             gameCtx.fillStyle = 'black';
             gameCtx.fillText(wordObj.word, wordObj.x, wordObj.y);
             if (wordObj.y > gameCanvas.height) {
                 createExplosion(wordObj.x, gameCanvas.height - 20, wordObj.word);
                 fallingWords.splice(index, 1);
-                updateLives(-1);
+                lives--;
+                livesElement.innerText = `Lives: ${lives}`;
+                if (lives <= 0) {
+                    gameOver();
+                }
             }
         });
     }
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const wordElement = document.createElement('div');
         wordElement.textContent = word;
         wordElement.style.position = 'absolute';
-        wordElement.style.left = `${x}px`;
-        wordElement.style.top = `${y}px`;
+        wordElement.style.left = x + 'px';
+        wordElement.style.top = y + 'px';
         wordElement.classList.add('explode');
         document.getElementById('game-area').appendChild(wordElement);
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
         gameInterval = setInterval(createFallingWord, 2000);
         updateInterval = setInterval(updateFallingWords, 30);
-        levelUpInterval = setInterval(levelUp, GAME_SETTINGS.levelUpTime);
+        levelUpInterval = setInterval(levelUp, levelUpTime);
     }
 
     function checkCollision(predictedWord) {
@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (String(wordObj.word) === String(predictedWord) && wordObj.y < gameCanvas.height - 50) {
                 createExplosion(wordObj.x, wordObj.y, wordObj.word);
                 fallingWords.splice(index, 1);
-                updateScore(10);
+                score += 10;
+                scoreElement.innerText = `Score: ${score}`;
                 console.log(`Removed word: ${wordObj.word}`);
             }
         });
@@ -108,32 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resetGame() {
         score = 0;
-        lives = GAME_SETTINGS.initialLives;
+        lives = 3;
         level = 1;
-        fallSpeed = GAME_SETTINGS.initialFallSpeed;
-        updateUI();
-        fallingWords = [];
-        samePredictionCount = 0;
-        gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-    }
-
-    function updateUI() {
+        fallSpeed = 2;
         scoreElement.innerText = `Score: ${score}`;
         livesElement.innerText = `Lives: ${lives}`;
         levelElement.innerText = `Level: ${level}`;
-    }
-
-    function updateScore(amount) {
-        score += amount;
-        scoreElement.innerText = `Score: ${score}`;
-    }
-
-    function updateLives(amount) {
-        lives += amount;
-        livesElement.innerText = `Lives: ${lives}`;
-        if (lives <= 0) {
-            gameOver();
-        }
+        fallingWords = [];
+        samePredictionCount = 0;
+        gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
     }
 
     function levelUp() {
@@ -149,35 +133,28 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(levelUpInterval);
         alert(`Game Over\nFinal Score: ${score}\nFinal Level: ${level}`);
         resetGame();
-        startButtonContainer.style.display = 'flex'; // Start 버튼 다시 보이기
+        startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
     }
 
     window.setMode = function(mode) {
         currentMode = mode;
         fetchLabels(mode).then(() => {
-            // Fetch labels 완료 후 단어 목록 확인
             console.log(`Filtered words for mode ${mode}:`, words[mode]);
         });
 
-        // 게임 인터벌 정리
         clearInterval(gameInterval);
         clearInterval(updateInterval);
         clearInterval(levelUpInterval);
 
         resetGame();
-
-        // Start Game 버튼 표시
         startButtonContainer.style.display = 'flex'; // Start 버튼 다시 보이기
 
-        // 활성화된 버튼 스타일 업데이트
         const buttons = document.querySelectorAll('.category-button');
         buttons.forEach(button => {
             if (button.textContent.toLowerCase() === mode) {
-                button.style.backgroundColor = '#ff7f50';
-                button.style.color = '#ffffff';
+                button.classList.add('selected');
             } else {
-                button.style.backgroundColor = '';
-                button.style.color = '';
+                button.classList.remove('selected');
             }
         });
     };
@@ -188,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    startButton.addEventListener('click', startGame); // Start 버튼 클릭 이벤트 추가
+    startButton.addEventListener('click', startGame);
 
     const video = document.createElement('video');
     const canvas = document.getElementById('outputCanvas');
@@ -280,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Predicted word: ${finalPrediction}`);
             if (finalPrediction !== 'Try Again') {
                 samePredictionCount++;
-                if (samePredictionCount >= GAME_SETTINGS.minPredictionCount) {
+                if (samePredictionCount >= minPredictionCount) {
                     checkCollision(finalPrediction);
                     samePredictionCount = 0;
                 }
