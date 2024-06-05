@@ -1,6 +1,9 @@
 /* 전체적인 레이아웃 및 폰트 설정 */
+* {
+    font-family: 'Comic Sans MS';
+}
+
 body {
-    font-family: 'comic-sans';
     text-align: center;
     padding: 20px;
     transition: background-color 0.5s ease;
@@ -13,7 +16,6 @@ body {
 
 h1 {
     color: #ff4500;
-    font-family: Comic;
     font-size: 2.5em;
     margin-bottom: 20px;
     text-shadow: 1px 1px 2px #ffa07a;
@@ -35,6 +37,35 @@ h1 {
     color: #ff4500;
     display: flex;
     gap: 20px;
+}
+
+/* Start button 스타일 */
+#start-button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button {
+    color: #ff4500;
+    background-color: #ffffff;
+    margin: 5px;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 2px solid #ff4500;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#start-button:hover {
+    color: #ffffff;
+    background-color: #ff7f50;
+    transform: scale(1.1);
 }
 
 /* 게임 화면 및 카메라 영역 스타일 */
@@ -89,33 +120,36 @@ canvas {
     height: 100%;
 }
 
-/* 예측된 단어 및 버튼 스타일 */
-#predicted-word {
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: #ff4500;
-}
-
+/* 버튼 스타일 */
 .button-container {
     margin-top: 20px;
 }
 
-.category-button {
+/* 기본 버튼 스타일 */
+.category-button,
+#start-button {
     color: #ff4500;
+    background-color: #ffffff;
     margin: 5px;
     padding: 15px 25px;
     font-size: 1.2em;
     cursor: pointer;
-    background-color: #ffffff;
     border: 2px solid #ff4500;
     border-radius: 10px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.category-button:hover {
+.category-button:hover,
+#start-button:hover {
     color: #ffffff;
     background-color: #ff7f50;
     transform: scale(1.1);
+}
+
+/* 선택된 버튼 스타일 */
+.category-button.selected {
+    background-color: #ff7f50;
+    color: #ffffff;
 }
 
 /* 터지는 애니메이션 정의 */

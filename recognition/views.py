@@ -45,8 +45,7 @@ def calculate_scores(y_true, y_pred):
 def predict_sign(request):
     if request.method == 'POST':
         try:
-            body_unicode = request.body.decode('utf-8')
-            body = json.loads(body_unicode)
+            body = json.loads(request.body.decode('utf-8'))
             landmarks = np.array(body['landmarks']).flatten()
             category = body['category']
 
@@ -56,7 +55,6 @@ def predict_sign(request):
                 return JsonResponse({'error': 'Invalid number of landmarks'}, status=400)
 
             landmarks = landmarks.reshape(1, -1)
-
             model = models[category]
             label_encoder = label_encoders[category]
 
@@ -82,20 +80,16 @@ def predict_sign(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 def get_word_labels(request):
-    word_labels = list(label_encoders['words'].classes_)
-    return JsonResponse({'words': word_labels})
+    return JsonResponse({'words': list(label_encoders['words'].classes_)})
 
 def get_alphabet_labels(request):
-    alphabet_labels = list(label_encoders['alphabet'].classes_)
-    return JsonResponse({'alphabet': alphabet_labels})
+    return JsonResponse({'alphabet': list(label_encoders['alphabet'].classes_)})
 
 def get_number_labels(request):
     try:
-        number_labels = label_encoders['numbers'].classes_
-        number_labels = [int(label) for label in number_labels]  # Convert numpy int64 to Python int
+        number_labels = list(map(int, label_encoders['numbers'].classes_))
         return JsonResponse({'numbers': number_labels})
     except Exception as e:
         import traceback
         error_message = traceback.format_exc()
         return JsonResponse({'error': 'Error fetching number labels', 'details': error_message}, status=500)
-    

@@ -4,6 +4,7 @@
     <title>Sign Language Game</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_game.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
@@ -21,13 +22,15 @@
             <div id="game-info">
                 <span id="score">Score: 0</span>
                 <span id="lives">Lives: 3</span>
-                <span id="level">Level: 1</span> <!-- 여기가 유일한 레벨 표시 -->
+                <span id="level">Level: 1</span>
             </div>
             <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="start-button-container">
+                <button id="start-button" class="category-button">Start Game</button>
+            </div>
         </div>
     </div>
     <div id="camera-area">
-        <!-- <video id="video" autoplay></video> -->
         <canvas id="outputCanvas"></canvas>
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
