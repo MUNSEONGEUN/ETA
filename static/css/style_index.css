@@ -80,7 +80,7 @@ body {
     height: 40px; /* 버튼 크기 확대 */
     padding: 0;
     font-size: 20px; /* 아이콘 크기 조정 */
-    background-color: #55CBCD;
+    background-color: #a2e1db;
     color: #ffffff;
     border: none;
     border-radius: 8px; /* 모서리를 둥글게 설정 */
@@ -97,7 +97,7 @@ body {
     height: 40px;
     padding: 0;
     font-size: 20px;
-    background-color: #ff6347;
+    background-color: #fcb9aa;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -110,11 +110,11 @@ body {
 }
 
 .send-button:hover {
-    background-color: #3A99A4;
+    background-color: #55CBCD;
 }
 
 #clear-button:hover {
-    background-color: #ff4500;
+    background-color: #ff6347;
 }
 
 #outputCanvas {

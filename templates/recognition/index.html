@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
     <title>Sign Language Translator</title>
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- FontAwesome 추가 -->
+    
 </head>
 <body>
     <p class="title">Sign Language Translator</p>
     <div class="button-container">
         <div id="text-area" class="text-area">
             <textarea id="text-input" rows="2" cols="50" readonly></textarea>
-            <button id="speak-button" class="send-button"><i class="fas fa-paper-plane"></i></button>
-            <button id="clear-button" class="send-button"><i class="fas fa-trash-alt"></i></button> <!-- Clear 버튼 추가 -->
+            <button id="speak-button" class="send-button"><i class="fa-solid fa-paper-plane"></i></button>
+            <button id="clear-button" class="send-button"><i class="fa-solid fa-trash"></i></button> <!-- Clear 버튼 추가 -->
         </div>
     </div>
     <div class="wrapper">
@@ -31,5 +30,8 @@
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     <script src="{% static 'js/translator.js' %}"></script>
-</body>
-</html>
+{% endblock %}    
+{% block scripts %}
+    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+{% endblock %}

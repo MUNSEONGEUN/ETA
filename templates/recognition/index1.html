@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Language Translator</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+    <p class="title">Sign Language Translator</p>
+    <div class="button-container">
+        <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
+        <button class="category-button" onclick="setMode('numbers')">Numbers</button>
+        <button class="category-button" onclick="setMode('words')">Words</button>
+    </div>
+    <!-- <div id="predicted-word">Predicted Word: <span id="word"></span></div> -->
+    <div class="wrapper">
+        <textarea id="text-input" rows="2" cols="50" readonly></textarea>
+        <div id="camera-area">
+            <div id="predicted-word">Predicted Word: <span id="word"></span></div>
+            <canvas id="outputCanvas" width="640" height="480"></canvas>
+        </div>
+    </div>
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <script src="{% static 'js/translator.js' %}"></script>
+</body>
+</html>
