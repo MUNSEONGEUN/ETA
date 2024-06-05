@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html>    
 <head>
-    <title>{% block title %}Sign Language App{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block head %}{% endblock %}    
 </head>
 <body id="body">
-    <h1>{% block heading %}Sign Language App{% endblock %}</h1>
-    {% block content %}{% endblock %}
-    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <div class="sticky">        
+        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
+        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
+        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
+        <div class="sticky-button">
+            <a class="icon" href="/"><i class="fa-solid fa-house"></i></a>
+        </div>
+    </div>
+    {% block content %}{% endblock %}    
     {% block scripts %}{% endblock %}
+    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

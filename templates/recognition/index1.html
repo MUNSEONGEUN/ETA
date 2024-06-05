@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block head %}
+<!DOCTYPE html>
+<html>
+<head>
     <title>Sign Language Translator</title>
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-{% endblock %}
-{% block content %}
+</head>
+<body>
     <p class="title">Sign Language Translator</p>
     <div class="button-container">
         <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
@@ -24,8 +25,5 @@
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     <script src="{% static 'js/translator.js' %}"></script>
-{% endblock %}    
-{% block scripts %}
-    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/base.js' %}"></script>
-{% endblock %}
+</body>
+</html>

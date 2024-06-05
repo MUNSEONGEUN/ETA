@@ -129,9 +129,13 @@ font-weight: bold;
     color: black;
     padding: 10px 20px;
     background-color: #f0f0f0;
-    border: none;
+    border: 1px solid #ddd;
     margin: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변경 시 부드러운 전환 효과 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 시펑 효과 추가 */
+    min-width: 150px; /* 최소 너비 지정 */
+    min-height: 50px; /* 최소 높이 지정 */
 }
 .info-container button:hover {
     background-color: #ddd;
