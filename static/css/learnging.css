@@ -1,12 +1,17 @@
 @import url('reset.css');
 body{
-    font-family: 'comic-sans';
-    background-color: #ECEAE4;
+    font-family: 'Comic Sans MS';
+    background-image: url('/static/images/playground.png'); /* 이미지 경로 설정 */
+    margin: 10px;
+    background-color: #5B950A;
+    background-repeat: no-repeat;
+
     /* justify-content: center;
     align-items: center; */
     
 }
 article {
+    font-family: 'Comic Sans MS';
     display: flex;
     flex-direction: column;
     position: relative;
@@ -14,8 +19,12 @@ article {
     justify-content: start;
 }
 .title {
-    font-family: 'comic-sans';
-    font-size: 72px;
+    font-family: 'Comic Sans MS';
+    font-size: 62px;
+    color: #FFFFFF;
+    text-shadow: -2px 3px #000;
+    outline: #000;
+    border: 10px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
@@ -134,19 +143,21 @@ article {
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
+    align-items: center; /* 세로 중앙 정렬 */
+	justify-content: center; /*가로 중앙 정렬*/
 }
 .video-area .button-group div {
     margin: 0 15px;
     border: 1px solid black;
     border-radius: 3px;
     padding: 7px;
-    
+    background-color: #fff;
     cursor: pointer;
 }
 .clicked{
     background-color: #71c5d0;
 	
-	color: white;
+	color: navy;
 }
 .video-area iframe {
     margin-right: 20px;
