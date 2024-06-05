@@ -1,3 +1,4 @@
+
 body {
     font-family: 'comic-sans';
     background-color: #ECEAE4;
@@ -6,10 +7,11 @@ body {
     transition: background-color 0.5s ease;
     position: relative; 
     background-color: #f0f8ff; /* AliceBlue 배경색 */
+    background-image: url('/static/images/index_back.jpg'); /*이미지 경로 설정*/
 }
 
 h1 {
-    color: #4682b4; /* SteelBlue 색상 */
+    color: black; /* SteelBlue 색상 */
     margin-bottom: 20px;
 }
 
@@ -29,7 +31,7 @@ h1 {
 }
 
 canvas {
-    border: 5px solid #4682b4; /* SteelBlue 색상 */
+    border: 5px solid #55CBCD; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -47,41 +49,18 @@ canvas {
 
 .button-container {
     margin-top: 10px;
-}
-
-.category-button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4682b4; /* SteelBlue 색상 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-.category-button:hover {
-    background-color: #5a9bd4; /* 밝은 SteelBlue 색상 */
-}
-
-.category-button.active {
-    background-color: #87CEFA; /* 더 밝은 색상 (LightSkyBlue) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* 강조된 그림자 */
-}
-
-
-#word {
-    font-weight: bold;
-    color: #a2e1db; /* 밝은 청록색 */
+    /* background-color: #55CBCD; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 #text-input {
     width: 80%;
     margin-top: 20px;
     padding: 10px;
-    border: 1px solid #4682b4; /* SteelBlue 색상 */
+    border: 2px solid #4682b4; /* SteelBlue 색상 */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 16px;
@@ -91,4 +70,40 @@ canvas {
     outline: none; /* 포커스 시 외곽선 제거 */
     overflow: hidden; /* 스크롤 바 숨기기 */
     resize: none; /* 크기 조정 비활성화 */
+}
+.category-button {
+    background-color: #ffffff;
+    color: midnightblue;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid midnightblue; /* 네모 박스 테두리 */
+    }
+
+.category-button:hover {
+    background-color: #55CBCD;
+    color: #ffffff;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.category-button:active {
+    background-color: #3A99A4;
+    border-color: #3A99A4;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+#predicted-word {
+    font-weight: bold;
+    font-size: 18px; 
+    color: balck; 
+}
+
+#word {
+    font-weight: bold;
+    color: #55CBCD; 
 }
