@@ -1,0 +1,90 @@
+body {
+    line-height: 1.6;
+    font-family: 'Comic Sans MS';
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+article {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.language-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: midnightblue;
+    background-color: transparent;
+    border: 3px solid midnightblue;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #3daab8;
+    transform: scale(1.05);
+    color: white;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #55CBCD;
+    text-shadow: 1px 1px 1.2px midnightblue;
+}
+
+h3 {
+    font-size: 2em;
+    color: #3daab8;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.menu {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
