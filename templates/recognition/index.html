@@ -7,20 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- FontAwesome 추가 -->
 </head>
 <body>
     <p class="title">Sign Language Translator</p>
     <div class="button-container">
-        <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
-        <button class="category-button" onclick="setMode('numbers')">Numbers</button>
-        <button class="category-button" onclick="setMode('words')">Words</button>
+        <div id="text-area" class="text-area">
+            <textarea id="text-input" rows="2" cols="50" readonly></textarea>
+            <button id="speak-button" class="send-button"><i class="fas fa-paper-plane"></i></button>
+            <button id="clear-button" class="send-button"><i class="fas fa-trash-alt"></i></button> <!-- Clear 버튼 추가 -->
+        </div>
     </div>
-    <!-- <div id="predicted-word">Predicted Word: <span id="word"></span></div> -->
     <div class="wrapper">
-        <textarea id="text-input" rows="2" cols="50" readonly></textarea>
         <div id="camera-area">
             <div id="predicted-word">Predicted Word: <span id="word"></span></div>
             <canvas id="outputCanvas" width="640" height="480"></canvas>
+        </div>
+        <div class="category-buttons">
+            <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
+            <button class="category-button" onclick="setMode('numbers')">Numbers</button>
+            <button class="category-button" onclick="setMode('words')">Words</button>
         </div>
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">

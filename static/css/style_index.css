@@ -5,18 +5,17 @@ body {
     margin: 0;
     overflow: hidden; /* 스크롤 비활성화 */
     position: relative;
-    background-image: url('/static/images/index_back.jpg'); /* 이미지 경로 설정 */
-    background-size: cover;
+    background-image: url('/static/images/predict.png'); /* 이미지 경로 설정 */
+    background-size: 100vw 110vh; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh; /* 전체 화면 높이 설정 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 90vw; /* 뷰포트 너비의 90%로 고정 */
+    height: 90vh; /* 뷰포트 높이의 90%로 고정 */
+    margin: auto; /* 가운데 정렬 */
 }
 
 .title {
+    display: inline-block; /* 글자 길이에 맞추기 위해 inline-block으로 설정 */
     font-size: 35px;
     font-weight: bold;
     color: #55CBCD;
@@ -25,11 +24,20 @@ body {
     padding: 10px 20px;
     border-radius: 10px;
     border: 2px solid #55CBCD;
+    margin-bottom: 10px; /* 아래 공간 추가 */
+}
+
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px; /* 아래 공간 추가 */
 }
 
 .wrapper {
     width: 100%;
-    height: calc(100vh - 150px); /* 전체 화면 높이에서 제목과 버튼의 높이를 뺌 */
+    height: calc(100vh - 250px); /* 전체 화면 높이에서 제목과 버튼의 높이를 뺌 */
     display: flex;
     flex-direction: column;
     align-items: center; /* 세로 가운데 정렬 */
@@ -40,35 +48,16 @@ body {
     position: relative;
     width: 640px; 
     height: 480px;
+    margin-bottom: 20px; /* 카메라 아래 공간 확보 */
 }
 
-canvas {
-    border: 5px solid #55CBCD; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#outputCanvas {
-    width: 100%;
-    height: 100%;
-}
-
-#result, #predicted-word {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-}
-
-.button-container {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.text-area {
+    position: relative;
+    width: 640px; /* 텍스트 박스의 길이를 카메라 영역과 동일하게 설정 */
 }
 
 #text-input {
-    width: 80%;
-    margin-top: 10px;
+    width: 100%;
     padding: 10px;
     border: 2px solid #4682b4; /* SteelBlue 색상 */
     border-radius: 5px;
@@ -79,6 +68,70 @@ canvas {
     outline: none;
     overflow: hidden;
     resize: none;
+    box-sizing: border-box;
+}
+
+.send-button {
+    position: absolute;
+    right: 50px; /* Clear 버튼과의 간격 조정 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; /* 버튼 크기 확대 */
+    height: 40px; /* 버튼 크기 확대 */
+    padding: 0;
+    font-size: 20px; /* 아이콘 크기 조정 */
+    background-color: #55CBCD;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px; /* 모서리를 둥글게 설정 */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#clear-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 20px;
+    background-color: #ff6347;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-button i, #clear-button i {
+    font-size: 20px; /* 아이콘 크기 조정 */
+}
+
+.send-button:hover {
+    background-color: #3A99A4;
+}
+
+#clear-button:hover {
+    background-color: #ff4500;
+}
+
+#outputCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    border: 5px solid #55CBCD; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#result, #predicted-word {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
 }
 
 /* 버튼 스타일 */
@@ -113,6 +166,12 @@ canvas {
 .category-button.active {
     background-color: #55CBCD;
     color: #ffffff;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 #predicted-word {
