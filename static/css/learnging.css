@@ -137,7 +137,12 @@ article {
 }
 
 .video-area {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
     flex: 10;
+    flex-direction: column; /* 아래로 정렬 */
+    
 }
 .video-area .button-group {
     display: flex;
@@ -145,22 +150,28 @@ article {
     margin-bottom: 30px;
     align-items: center; /* 세로 중앙 정렬 */
 	justify-content: center; /*가로 중앙 정렬*/
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
 }
 .video-area .button-group div {
     margin: 0 15px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 3px;
     padding: 7px;
     background-color: #fff;
     cursor: pointer;
+    font-weight: bold;
+    text-align: center;
 }
-.button:hover {
-	background-color: #3daab8;
-	transform: scale(1.05);
-	color: white;
-}
-.video-area .button-group .clicked{
-    background-color: #71c5d0;	
+.video-area .button-group div:hover {
+    background-color: #55CBCD; /* 배경색 변경 */
+    color: white; /* 글자색 변경 */
+    text-align: center;
+}  
+.clicked{
+    background-color: #71c5d0;
+	
 	color: navy;
 }
 .video-area iframe {
