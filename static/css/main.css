@@ -1,6 +1,6 @@
 @import url("reset.css");
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'comic-sans';
 	display: flex;
 	gap: 10px;
 	margin: 0;

@@ -1,62 +1,34 @@
 /* 전체적인 레이아웃 및 폰트 설정 */
+* {
+    font-family: 'Comic Sans MS';
+}
+
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
-    padding: 20px;
-    transition: background-color 0.5s ease;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* 스크롤 비활성화 */
     position: relative;
     background-image: url('/static/images/background.png'); /* 이미지 경로 설정 */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    height: 100vh; /* 전체 화면 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    color: #ff6347;
+    color: #ff4500;
     font-size: 2.5em;
     margin-bottom: 20px;
     text-shadow: 1px 1px 2px #ffa07a;
-    background-color: white; /* 배경색을 흰색으로 설정 */
-    display: block; /* 블록 요소로 설정 */
-    width: 400px; /* 넓이 자동 설정 */
-    padding: 10px 20px; /* 패딩 추가 */
-    border-radius: 10px; /* 모서리 둥글게 */
-    margin: 0 auto; /* 가운데 정렬 */
-}
-
-#predicted-word {
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: #ff4500;
-    background-color: white; /* 배경색을 흰색으로 설정 */
-    display: inline-block; /* 배경색 넓이 줄이기 위해 inline-block 설정 */
-    padding: 10px 20px; /* 패딩 추가 */
-    border-radius: 10px; /* 모서리 둥글게 */
-}
-
-/* 모드에 따른 배경 스타일 */
-body.alphabet-mode {
-    background-color: #ECEAE4;
-    background-image: linear-gradient(135deg, #FFDBCC 25%, transparent 25%), linear-gradient(225deg, #FFDBCC 25%, transparent 25%), linear-gradient(45deg, #FFDBCC 25%, transparent 25%), linear-gradient(315deg, #FFDBCC 25%, #ECEAE4 25%);
-    background-position: 10px 0, 10px 0, 0 0, 0 0;
-    background-size: 20px 20px;
-    background-repeat: repeat;
-}
-
-body.numbers-mode {
-    background-color: #E4EAF1;
-    background-image: linear-gradient(135deg, #CCDBFF 25%, transparent 25%), linear-gradient(225deg, #CCDBFF 25%, transparent 25%), linear-gradient(45deg, #CCDBFF 25%, transparent 25%), linear-gradient(315deg, #CCDBFF 25%, #E4EAF1 25%);
-    background-position: 10px 0, 10px 0, 0 0, 0 0;
-    background-size: 20px 20px;
-    background-repeat: repeat;
-}
-
-body.words-mode {
-    background-color: #E4F1E4;
-    background-image: linear-gradient(135deg, #CCFFCC 25%, transparent 25%), linear-gradient(225deg, #CCFFCC 25%, transparent 25%), linear-gradient(45deg, #CCFFCC 25%, transparent 25%), linear-gradient(315deg, #CCFFCC 25%, #E4F1E4 25%);
-    background-position: 10px 0, 10px 10px, 0 0, 0 0;
-    background-size: 20px 20px;
-    background-repeat: repeat;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #ff4500;
 }
 
 /* 게임 정보 스타일 */
@@ -70,38 +42,76 @@ body.words-mode {
     gap: 20px;
 }
 
-/* 게임 화면 및 카메라 영역 스타일 */
-.wrapper {
-    position: relative;
-    width: 100%;
-    height: 640px;
+/* Start button 스타일 */
+#start-button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+#start-button {
+    color: #ff4500;
+    background-color: #ffffff;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 2px solid #ff4500;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#start-button:hover {
+    color: #ffffff;
+    background-color: #ff7f50;
+    transform: scale(1.1);
+}
+
+/* 게임 화면 및 카메라 영역 스타일 */
+.wrapper {
+    width: 100%;
+    height: calc(100vh - 100px); /* 전체 화면 높이에서 제목의 높이를 뺌 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 #game-area {
     width: 800px;
     height: 600px;
-    position: relative;
-    margin: 0 auto;
     border: 3px solid #ffb6c1;
     border-radius: 15px;
     overflow: hidden;
     background-color: #fffaf0;
     box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    position: relative;
+}
+
+#predicted-word {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #ff4500;
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #ff4500;
 }
 
 #camera-area {
     position: absolute;
-    bottom: 200px;
+    bottom: 10px;
     right: 10px;
     width: 160px;
     height: 120px;
 }
 
 canvas {
-    border: 5px solid #ffa07a;
+    border: 4px solid #ff4500;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(255, 160, 122, 0.5);
 }
@@ -111,31 +121,38 @@ canvas {
     height: 100%;
 }
 
-/* 예측된 단어 및 버튼 스타일 */
-#predicted-word {
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: #ff4500;
-}
-
+/* 버튼 스타일 */
 .button-container {
-    margin-top: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.category-button {
-    margin: 5px;
+/* 기본 버튼 스타일 */
+.category-button,
+#start-button {
+    color: #ff4500;
+    background-color: #ffffff;
     padding: 15px 25px;
     font-size: 1.2em;
     cursor: pointer;
-    background-color: #ffdab9;
     border: 2px solid #ff4500;
     border-radius: 10px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.category-button:hover {
+.category-button:hover,
+#start-button:hover {
+    color: #ffffff;
     background-color: #ff7f50;
     transform: scale(1.1);
+}
+
+/* 선택된 버튼 스타일 */
+.category-button.selected {
+    background-color: #ff7f50;
+    color: #ffffff;
 }
 
 /* 터지는 애니메이션 정의 */

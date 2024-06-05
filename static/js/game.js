@@ -4,12 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const scoreElement = document.getElementById('score');
     const livesElement = document.getElementById('lives');
     const levelElement = document.getElementById('level');
-    
+    const startButtonContainer = document.getElementById('start-button-container');
+    const startButton = document.getElementById('start-button');
+
     let score = 0;
     let lives = 3;
     let level = 1;
     let fallSpeed = 2;
     let levelUpTime = 10000; // 10 seconds per level
+    let gameInterval;
+    let updateInterval;
+    let levelUpInterval;
 
     const words = {
         'alphabet': [],
@@ -17,9 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'words': []
     };
     let fallingWords = [];
-    let currentMode = 'words';
+    let currentMode = null;
     let samePredictionCount = 0;
     const minPredictionCount = 10;
+
+    // 초기 설정에서 버튼을 명시적으로 숨김
+    startButtonContainer.style.display = 'none';
 
     async function fetchLabels(mode) {
         let url = '';
@@ -30,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch(url);
             const data = await response.json();
-            words[mode] = data[mode];
+            words[mode] = data[mode].filter(word => word !== 'del' && word !== 'space'); // 'del'과 'space' 필터링
             console.log(`Fetched ${mode} labels:`, words[mode]);
         } catch (error) {
             console.error(`Error fetching ${mode} labels:`, error);
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
         fallingWords.forEach((wordObj, index) => {
             wordObj.y += fallSpeed;
-            gameCtx.font = '20px Arial';
+            gameCtx.font = '20px Comic Sans MS';
             gameCtx.fillStyle = 'black';
             gameCtx.fillText(wordObj.word, wordObj.x, wordObj.y);
             if (wordObj.y > gameCanvas.height) {
@@ -79,9 +87,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startGame() {
-        setInterval(createFallingWord, 2000);
-        setInterval(updateFallingWords, 30);
-        setInterval(levelUp, levelUpTime);
+        startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
+        gameInterval = setInterval(createFallingWord, 2000);
+        updateInterval = setInterval(updateFallingWords, 30);
+        levelUpInterval = setInterval(levelUp, levelUpTime);
     }
 
     function checkCollision(predictedWord) {
@@ -108,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         levelElement.innerText = `Level: ${level}`;
         fallingWords = [];
         samePredictionCount = 0;
+        gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
     }
 
     function levelUp() {
@@ -118,14 +128,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function gameOver() {
+        clearInterval(gameInterval);
+        clearInterval(updateInterval);
+        clearInterval(levelUpInterval);
         alert(`Game Over\nFinal Score: ${score}\nFinal Level: ${level}`);
         resetGame();
+        startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
     }
 
     window.setMode = function(mode) {
         currentMode = mode;
-        fetchLabels(mode);
+        fetchLabels(mode).then(() => {
+            console.log(`Filtered words for mode ${mode}:`, words[mode]);
+        });
+
+        clearInterval(gameInterval);
+        clearInterval(updateInterval);
+        clearInterval(levelUpInterval);
+
         resetGame();
+        startButtonContainer.style.display = 'flex'; // Start 버튼 다시 보이기
+
+        const buttons = document.querySelectorAll('.category-button');
+        buttons.forEach(button => {
+            if (button.textContent.toLowerCase() === mode) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        });
     };
 
     document.querySelector('.button-container').onclick = (event) => {
@@ -134,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    startGame();
+    startButton.addEventListener('click', startGame);
 
     const video = document.createElement('video');
     const canvas = document.getElementById('outputCanvas');

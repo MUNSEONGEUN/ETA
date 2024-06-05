@@ -1,24 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS';
     text-align: center;
-    padding: 20px;
-    transition: background-color 0.5s ease;
-    position: relative; 
-    background-color: #f0f8ff; /* AliceBlue 배경색 */
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* 스크롤 비활성화 */
+    position: relative;
+    background-image: url('/static/images/index_back.jpg'); /* 이미지 경로 설정 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* 전체 화면 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    color: #4682b4; /* SteelBlue 색상 */
-    margin-bottom: 20px;
+.title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #55CBCD;
+    text-shadow: 1.5px 1.5px 1.5px midnightblue;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #55CBCD;
 }
 
 .wrapper {
-    position: relative;
     width: 100%;
-    height: 640px;
+    height: calc(100vh - 150px); /* 전체 화면 높이에서 제목과 버튼의 높이를 뺌 */
     display: flex;
     flex-direction: column;
     align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center;
 }
 
 #camera-area {
@@ -28,7 +43,7 @@ h1 {
 }
 
 canvas {
-    border: 5px solid #4682b4; /* SteelBlue 색상 */
+    border: 5px solid #55CBCD; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -39,44 +54,82 @@ canvas {
 }
 
 #result, #predicted-word {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 18px;
     color: #333;
 }
 
 .button-container {
     margin-top: 10px;
-}
-
-.category-button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4682b4; /* SteelBlue 색상 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-.category-button:hover {
-    background-color: #5a9bd4; /* 밝은 SteelBlue 색상 */
-}
-
-#word {
-    font-weight: bold;
-    color: #a2e1db; /* 밝은 청록색 */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 #text-input {
     width: 80%;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
-    border: 1px solid #4682b4; /* SteelBlue 색상 */
+    border: 2px solid #4682b4; /* SteelBlue 색상 */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 16px;
-    margin-bottom: 20px; /* 추가하여 텍스트 입력란과 카메라 간 간격 확보 */
+    caret-color: black;
+    white-space: pre-wrap;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+}
+
+/* 버튼 스타일 */
+.category-button {
+    background-color: #ffffff;
+    font-family: 'Comic Sans MS';
+    color: midnightblue;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid midnightblue;
+}
+
+.category-button:hover {
+    background-color: #55CBCD;
+    color: #ffffff;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.category-button:active {
+    background-color: #3A99A4;
+    border-color: #3A99A4;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+.category-button.active {
+    background-color: #55CBCD;
+    color: #ffffff;
+}
+
+#predicted-word {
+    font-weight: bold;
+    font-size: 18px; 
+    color: black; 
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ffffff;
+    border: 2px solid #55CBCD;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: left;
+}
+
+#word {
+    font-weight: bold;
+    color: #55CBCD; 
 }
