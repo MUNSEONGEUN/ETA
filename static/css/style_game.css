@@ -35,11 +35,12 @@ h1 {
 #game-info {
     position: absolute;
     top: 10px;
-    right: 10px;
+    left: 10px;
     font-size: 18px;
     color: #ff4500;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* Start button 스타일 */
@@ -83,7 +84,7 @@ h1 {
 #game-area {
     width: 800px;
     height: 600px;
-    border: 3px solid #ffb6c1;
+    border: 3px solid #ff4500;
     border-radius: 15px;
     overflow: hidden;
     background-color: #fffaf0;
@@ -92,16 +93,15 @@ h1 {
 }
 
 #predicted-word {
-    margin-top: 10px;
-    font-size: 1.5em;
+    font-size: 1em; /* 폰트 크기 줄임 */
     color: #ff4500;
-    background-color: #ffffff;
-    display: inline-block;
-    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* 투명하게 수정 */
+    padding: 5px 10px; /* 패딩 줄임 */
     border-radius: 10px;
     border: 2px solid #ff4500;
 }
 
+/* 카메라 영역 스타일 */
 #camera-area {
     position: absolute;
     bottom: 10px;
@@ -127,6 +127,10 @@ canvas {
     display: flex;
     justify-content: center;
     gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* 기본 버튼 스타일 */
