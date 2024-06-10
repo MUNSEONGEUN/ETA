@@ -16,8 +16,7 @@
 body {
     font-family: 'Comic Neue', cursive;
     background-image: url('/static/images/playground.png');
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
-
+}
 /* Keyframes for the opening animation */
 @keyframes slideDown {
     0% {
@@ -96,62 +95,44 @@ article {
 
 .side-bar .category div:nth-child(1) {
     color: #ffb3b3;
-    color: #ffb3b3;
 }
 .side-bar .category div:nth-child(2) {
-    color: #ffd9b3;
     color: #ffd9b3;
 }
 .side-bar .category div:nth-child(3) {
     color: #ffffb3;
-    color: #ffffb3;
 }
 .side-bar .category div:nth-child(4) {
-    color: #d9ffb3;
     color: #d9ffb3;
 }
 .side-bar .category div:nth-child(5) {
     color: #b3ffb3;
-    color: #b3ffb3;
 }
 .side-bar .category div:nth-child(6) {
-    color: #b3ffd9;
     color: #b3ffd9;
 }
 .side-bar .category div:nth-child(7) {
     color: #b3ffff;
-    color: #b3ffff;
 }
 .side-bar .category div:nth-child(8) {
-    color: #b3d9ff;
     color: #b3d9ff;
 }
 .side-bar .category div:nth-child(9) {
     color: #b3b3ff;
-    color: #b3b3ff;
 }
 .side-bar .category div:nth-child(10) {
     color: #d9b3ff;
-    color: #d9b3ff;
 }
-.side-bar .category div:nth-child(11) {
-    color: #abdee6;
 .side-bar .category div:nth-child(11) {
     color: #abdee6;
 }
 .side-bar .category div:nth-child(12) {
     color: #ffd9b3;
-.side-bar .category div:nth-child(12) {
-    color: #ffd9b3;
 }
-.side-bar .category div:nth-child(13) {
-    color: #f3b0c3;
 .side-bar .category div:nth-child(13) {
     color: #f3b0c3;
 }
 
-.side-bar .category div:hover {
-    background-color: #fff;
 
 .side-bar .category div:hover {
     background-color: #fff;
@@ -159,7 +140,6 @@ article {
     transform: scale(1.05);
 }
 
-.side-bar .category .fa-solid {
 
 .side-bar .category .fa-solid {
     margin-right: 7px;
