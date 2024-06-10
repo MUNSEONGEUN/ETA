@@ -76,3 +76,19 @@ main {
     transform: scale(1.05);
     color: white;
 }
+.logo {
+    position: absolute;
+    bottom: -900px;
+    right: 10px;
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+
+}
+
+.logo img {
+    width: 200px; /* 이미지의 너비를 조정 */
+    /* height: auto; */
+}
