@@ -37,6 +37,9 @@ def index(request):
 def game(request):
     return render(request, 'recognition/game.html')
 
+def about(request):
+    return render(request, 'recognition/about.html')
+
 def calculate_scores(y_true, y_pred):
     precision = precision_score(y_true, y_pred, average='weighted', zero_division=1)
     recall = recall_score(y_true, y_pred, average='weighted', zero_division=1)
