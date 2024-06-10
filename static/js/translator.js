@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastPrediction = '';
     let samePredictionCount = 0;
     const minPredictionCount = 30; // 같은 단어로 인식된 최소 횟수
-    const alphabetThreshold = 0.25; // 알파벳 임계값 25%
+    const alphabetThreshold = 0.2; // 알파벳 임계값 25%
     const otherThreshold = 0.5; // 다른 카테고리 임계값 50%
     let cursorVisible = true; // 커서 가시성 상태
 
