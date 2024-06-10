@@ -16,12 +16,32 @@
 body {
     font-family: 'Comic Neue', cursive;
     background-image: url('/static/images/playground.png');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+/* Keyframes for the opening animation */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-image: url('/static/images/playground.png');
     margin: 10px;
     background-color: #5B950A;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
+    background-size: cover;
+    color: #fff;
 }
+
 
 article {
     display: flex;
@@ -30,7 +50,9 @@ article {
     margin-top: 15vh;
     justify-content: start;
     animation: slideDown 1s ease-out;
+    animation: slideDown 1s ease-out;
 }
+
 
 .title {
     font-size: 62px;
@@ -50,8 +72,10 @@ article {
     flex: 1;
     display: flex;
     flex-direction: column;
+    flex-direction: column;
     padding: 7px;
 }
+
 
 .side-bar .category div {
     padding: 7px;
@@ -63,12 +87,18 @@ article {
     transition: transform 0.3s, background-color 0.3s, color 0.3s;
     display: flex;
     align-items: center;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
 }
+
 
 .side-bar .category div:nth-child(1) {
     color: #ffb3b3;
+    color: #ffb3b3;
 }
 .side-bar .category div:nth-child(2) {
+    color: #ffd9b3;
     color: #ffd9b3;
 }
 .side-bar .category div:nth-child(3) {
