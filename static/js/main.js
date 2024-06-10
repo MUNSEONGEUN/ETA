@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const qnaBoxes = document.querySelectorAll('.qna-box');
+    const elements = document.querySelectorAll('.usage-step, .qna-box');
     const curtain = document.querySelector('.curtain');
+
     let observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -16,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    qnaBoxes.forEach(box => {
-        observer.observe(box);
+    elements.forEach(element => {
+        observer.observe(element);
     });
 
     window.addEventListener('scroll', function() {
         let scrollPosition = window.scrollY;
         let windowHeight = window.innerHeight;
-        let opacity = 1 - (scrollPosition / windowHeight); // Adjusted multiplier for faster fade
+        let opacity = 1 - (scrollPosition / (windowHeight * 0.6)); // Adjust the multiplier for faster/slower fade
         curtain.style.opacity = Math.max(0, Math.min(1, opacity)); // Ensure opacity stays between 0 and 1
     });
 });
