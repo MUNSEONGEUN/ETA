@@ -67,16 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawBoundingBox(ctx, landmarks, {color, lineWidth}) {
         const xValues = landmarks.map(landmark => canvas.width - landmark.x * canvas.width); // 미러링된 x 좌표
         const yValues = landmarks.map(landmark => landmark.y * canvas.height);
-
+    
         const minX = Math.min(...xValues);
         const maxX = Math.max(...xValues);
         const minY = Math.min(...yValues);
         const maxY = Math.max(...yValues);
-
+    
+        const padding = 20; // 원하는 크기만큼 박스 영역을 늘림
+    
         ctx.beginPath();
-        ctx.rect(minX, minY, maxX - minX, maxY - minY);
+        ctx.rect(minX - padding, minY - padding, (maxX - minX) + 2 * padding, (maxY - minY) + 2 * padding);
         ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = color;
+        ctx.strokeStyle = '#ff6347'; // 박스 색깔을 '#ff6347'로 변경
         ctx.stroke();
     }
 

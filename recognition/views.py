@@ -86,6 +86,7 @@ def predict_sign(request):
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
+
 def get_word_labels(request):
     word_labels = list(label_encoders['words'].classes_)
     return JsonResponse({'words': word_labels})
@@ -97,7 +98,7 @@ def get_alphabet_labels(request):
 def get_number_labels(request):
     try:
         number_labels = label_encoders['numbers'].classes_
-        number_labels = [int(label) for label in number_labels]  # Convert numpy int64 to Python int
+        number_labels = [str(label) for label in number_labels]  # Convert numpy int64 to Python str
         return JsonResponse({'numbers': number_labels})
     except Exception as e:
         import traceback
