@@ -38,7 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch(url);
             const data = await response.json();
-            words[mode] = data[mode].filter(word => word !== 'del' && word !== 'space'); // 'del'과 'space' 필터링
+            
+            if (data && data.words) {
+                words[mode] = data.words.filter(word => word !== 'del' && word !== 'space'); // 'del'과 'space' 필터링
+            } else if (data && data.alphabet) {
+                words[mode] = data.alphabet.filter(word => word !== 'del' && word !== 'space');
+            } else if (data && data.numbers) {
+                words[mode] = data.numbers.filter(word => word !== 'del' && word !== 'space');
+            }
+            
             console.log(`Fetched ${mode} labels:`, words[mode]);
         } catch (error) {
             console.error(`Error fetching ${mode} labels:`, error);
@@ -253,7 +261,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            const finalPrediction = data.final_prediction;
+            let finalPrediction = data.final_prediction;
+            if (finalPrediction === 'space' || finalPrediction === 'del') {
+                finalPrediction = 'Try Again';
+            }
+
             console.log(`Predicted word: ${finalPrediction}`);
             if (finalPrediction !== 'Try Again') {
                 samePredictionCount++;
