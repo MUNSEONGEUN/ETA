@@ -109,14 +109,10 @@ const json = {'alphabet': {'A': '<iframe width="800" height="450" src="https://w
 'Helicopter': '<iframe width="800" height="450" src="https://www.youtube.com/embed/hdiSoTueeN0?si=aQa0zCAtoUHWWiMy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'}}
 
 
-
 category.addEventListener("click",(e)=>{
     if(!e.target.className.includes("menu"))  return
     console.log("clicked");    
     const menu = e.target.className.split(" ")[1]    
-    console.log(menu);
-    const keys = Object.keys(json[menu])   
-    console.log(keys); 
     console.log(menu);
     const keys = Object.keys(json[menu])   
     console.log(keys); 
