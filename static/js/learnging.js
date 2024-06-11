@@ -114,12 +114,8 @@ category.addEventListener("click",(e)=>{
     if(!e.target.className.includes("menu"))  return
     console.log("clicked");    
     const menu = e.target.className.split(" ")[1]    
-    console.log(menu);
-    const keys = Object.keys(json[menu])   
-    console.log(keys); 
-    console.log(menu);
-    const keys = Object.keys(json[menu])   
-    console.log(keys); 
+    
+    const keys = Object.keys(json[menu])
     const values  = json[menu]
     console.log(menu, keys);
     title.textContent = menu

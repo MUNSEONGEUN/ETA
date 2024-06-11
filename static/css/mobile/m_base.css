@@ -1,0 +1,32 @@
+.sticky{
+    bottom: 0;
+    left: 0;
+    border-radius: 0;
+    width: 100vw;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+.sticky:hover{
+    height: 50px;
+    transition: unset;
+}
+.sticky:hover .link:nth-child(1){
+    transform: unset;
+}
+.sticky:hover .link:nth-child(2){
+    transform: unset;
+    transition: unset;
+    animation: unset;
+}
+.icon {    
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-bottom: 100%; */
+    /* box-sizing: border-box; */
+    position: unset;
+    bottom: unset;
+    left: unset;
+}
