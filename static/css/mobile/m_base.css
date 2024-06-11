@@ -3,7 +3,7 @@
     left: 0;
     border-radius: 0;
     width: 100vw;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-around;
 }
 .sticky:hover{

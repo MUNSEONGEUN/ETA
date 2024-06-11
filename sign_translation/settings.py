@@ -11,7 +11,8 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-cqxan4$&6ym$9unri)6_n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://www.wowbabysign.site']
 
 # Application definition
 INSTALLED_APPS = [
