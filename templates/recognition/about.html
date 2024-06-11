@@ -2,7 +2,7 @@
 {% load static %}
 {% block head %}
     <title>About Us</title>
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <script>
         function showText(language) {
@@ -24,8 +24,8 @@
                 <p>손가락 철자는 American Sign Language를 통해 소통하는 한 방법입니다. 종이와 연필을 사용하는 대신 손가락을 사용하여 단어나 글자를 철자하는 점을 제외하면 글쓰기와 유사합니다. 알파벳과 숫자의 모든 글자마다 인식할 수 있는 손가락 철자 기호가 있습니다. 손가락 철자에 능숙해지면 모든 것을 하나씩 철자하는 것보다 난청인 또는 청각 장애인과 소통하기 훨씬 쉬운 더 큰 기호로 넘어갈 준비가 된 것입니다.</p>
             `;
 
-            document.getElementById('content').innerHTML = language === 'english' ? englishText : koreanText;
-        }
+        document.getElementById('content').innerHTML = language === 'english' ? englishText : koreanText;
+    }
 
         document.addEventListener('DOMContentLoaded', function() {
             showText('english');
