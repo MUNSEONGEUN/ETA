@@ -1,73 +1,19 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
+{% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <style>
-        .sticky {
-            display: none; /* 예시: .sticky 요소를 보이지 않게 */
-        }
-        body {
-            background-color: #ECEAE4;
-        }
-        .curtain::before {
-            content: "";
-            background: url("{% static 'images/hand.png' %}") no-repeat center center/cover;
-            background-size: cover;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            animation: curtain-open 3s forwards;
-            transition: opacity 0.5s ease-out;
-        }
+    <title>Baby Signing Time</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/mobile/m_main.css' %}" type="text/css" 
+					media="screen and (max-width: 768px)"/>
 
-        @keyframes curtain-open {
-            0% {
-                clip-path: inset(0 50% 0 50%);
-            }
-            100% {
-                clip-path: inset(0 0 0 0);
-            }
-        }
 
-        .hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
 
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .usage-step::before {
-            content: attr(data-step);
-            position: absolute;
-            left: -60px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            color: #55CBCD;
-        }
-    </style>
-</head>
-<body id="body">
-    <div class="sticky">
-        <div class="sticky-button">
-            <a class="icon" href="/"><i class="fa-solid fa-house"></i></a>
-        </div>
-        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
-        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
-    </div>
+{% endblock %}
+{% block content %}
     <div class="curtain">
         <section class="hero">
             <h2>Welcome to Baby Signing Time</h2>
@@ -158,5 +104,4 @@
     <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/base.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}
