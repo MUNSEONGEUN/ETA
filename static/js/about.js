@@ -1,4 +1,4 @@
-<script>
+
     function showText(language) {
         const englishText = `
             <h2>About us</h2>
@@ -19,9 +19,9 @@
             `;
 
         document.getElementById('content').innerHTML = language === 'english' ? englishText : koreanText;
-    }
+    };
 
     document.addEventListener('DOMContentLoaded', function() {
         showText('english');
     });
-</script>
+

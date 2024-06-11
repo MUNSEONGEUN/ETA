@@ -1,11 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}
     <title>About Us</title>
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
     <script>
         function showText(language) {
@@ -18,24 +15,26 @@
                 <p>Learning sign language from an early age provides several advantages for both farmers and non-farmers. These advantages include language development, IQ proficiency, improved social skills, and parental ties. In addition, it is greatly helpful in promoting understanding and cooperation in communication between farmers and non-farm children.</p>
             `;
 
-            const koreanText = `
-                <h2>About Us</h2>
-                <p>저희 프로젝트는 미국 공용 수어 ASL 동작을 텍스트로 번역하는 프로그램으로, 유아부터 어린이들에게 도움이 되는 '어린이 수화 교육 프로그램'입니다. 우리는 이 프로그램을 이용하여 아이들이 게임과 번역기능, 수화 영상 시청들을 통해 청각장애인의 수화를 교육 할 수 있도록 이 프로그램을 설계했습니다.</p>
-                <h3>ASL이란 무엇인가요?</h3>
-                <p>ASL(American Sign Language)은 미국과 캐나다의 농인 커뮤니티에서 주로 사용되는 수어입니다. ASL은 고유한 문법과 어휘를 가지고 있으며, 음성 언어와는 달리 손의 모양, 위치, 움직임, 그리고 얼굴 표정 등을 사용하여 의미를 전달합니다. ASL은 영어와는 독립적인 언어로, 미국과 캐나다의 많은 농인들 사이에서 주요 의사소통 수단으로 사용됩니다. </p>
-                <h3>아이들에게 수어의 영향</h3>
-                <p>어린 시절부터 수어를 배우는 것은 농인과 비농인 모두에게 여러 가지 장점을 제공합니다. 이러한 장점들은 언어 발달, IQ 능력, 사회성 향상, 부모와 유대 관계 형성. 또, 농인과 비농인 아이들 간의 의사소통의 이해와 협력을 증진시키는데 큰 도움이 됩니다.</p>
-                `;
+        const koreanText = `
+            <h2>About Us</h2>
+            <p>Learn ASL은 청각이 정상인 사람, 난청인 사람, 청각 장애인이 소통할 수 있게 해주는 정보 웹사이트입니다. 이 웹사이트는 지역 사회 행사, "ASL 배우기" 팁, 청각 장애인 역사 정보, 일반 ASL 도구, ASL 비디오, ASL 게임, ASL에 관한 흥미로운 사실, ASL 신화, 그리고 참여 방법, 기부 방법 및 인공 와우에 대한 진실에 대한 정보를 제공합니다.</p>
+            <h3>ASL이란 무엇인가요?</h3>
+            <p>ASL은 American Sign Language의 약자입니다. 미국에는 다양한 단어에 대해 서부 해안과 동부 해안 기호가 있습니다. American Sign Language의 가장 기본적인 단계는 손가락 철자를 배우는 것입니다.</p>
+            <h3>손가락 철자란 무엇인가요?</h3>
+            <p>손가락 철자는 American Sign Language를 통해 소통하는 한 방법입니다. 종이와 연필을 사용하는 대신 손가락을 사용하여 단어나 글자를 철자하는 점을 제외하면 글쓰기와 유사합니다. 알파벳과 숫자의 모든 글자마다 인식할 수 있는 손가락 철자 기호가 있습니다. 손가락 철자에 능숙해지면 모든 것을 하나씩 철자하는 것보다 난청인 또는 청각 장애인과 소통하기 훨씬 쉬운 더 큰 기호로 넘어갈 준비가 된 것입니다.</p>
+        `;
 
-            document.getElementById('content').innerHTML = language === 'english' ? englishText : koreanText;
-        }
+
+        document.getElementById('content').innerHTML = language == 'english' ? englishText : koreanText;
+    }
 
         document.addEventListener('DOMContentLoaded', function() {
             showText('english');
         });
     </script>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <article class="comic-sans kcc-dodamdodam">
         <div class="image-container">
             <img src="https://www.youtube.com/watch?v=5_sRFGa3phE" alt="ASL Image">
@@ -55,5 +54,4 @@
         <img src="{% static 'images/logo.jpg' %}" alt="Baby Sign Language Logo">
     </div> -->
 
-</body>
-</html>
+{% endblock %}
