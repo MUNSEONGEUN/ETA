@@ -37,7 +37,7 @@
 {% block content %}
     <article class="comic-sans kcc-dodamdodam">
         <div class="image-container">
-            <img src="https://www.youtube.com/watch?v=5_sRFGa3phE" alt="ASL Image">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5_sRFGa3phE?si=YnWLT7pPgFojQyEq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="language-buttons">
             <button class="button" onclick="showText('english')">English</button>
@@ -46,9 +46,7 @@
         <div id="content">
             <!-- Initial content will be loaded by JavaScript -->
         </div>
-        <div class="menu">
-            <a class="button" href="{% url 'index' %}">Home</a>
-        </div>
+
     </article>
     <!-- <div class="logo">
         <img src="{% static 'images/logo.jpg' %}" alt="Baby Sign Language Logo">
