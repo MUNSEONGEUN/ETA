@@ -1,0 +1,45 @@
+.hero h2{
+    font-size: 9.5vw;
+}
+.hero p {
+    font-size: 4vw;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.usage-section{
+    padding: 0;
+}
+.usage-title {
+    font-size: 27px;
+    margin-top: 45px;
+    margin-bottom: 0px;
+}
+.usage-step::before {
+    left: 10px;
+    top: 9%;    
+    font-size: 19px;
+}
+.usage-step {
+    padding: 20px;
+    padding-top: 30px;
+    /* white-space: pre; */
+    max-width: 82vw;
+}
+.usage-section {
+    margin-top: 15px;
+}
+.qna-section{
+    padding: 20px;
+    max-width: 82vw;
+}
+.qna-title {
+    font-size: 27px;
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+
+.qna-box.answer + .qna-box.question {
+    margin-top: 12vh;
+}

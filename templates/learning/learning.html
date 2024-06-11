@@ -2,15 +2,11 @@
 {% load static %}
 
 {% block head %}
-    <title>Learning</title>
-    <link rel="stylesheet" href="{% static 'css/learning.css' %}">
-{% endblock %}
-
-{% block sticky_links %}
-    <a id="index" class="icon link hidden" href="{% url 'index' %}"><i class="fa-solid fa-hand"></i></a>
-    <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-{% endblock %}
-
+    <link rel="stylesheet" href="{% static 'css/learnging.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}"
+    type="text/css" 
+    media="screen and (max-width: 768px)">
+{% endblock%}
 {% block content %}
     <article>
         <div class="title">Select category</div>
