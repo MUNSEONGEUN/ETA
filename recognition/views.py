@@ -31,8 +31,8 @@ for category in model_paths:
     with open(label_encoder_paths[category], 'rb') as file:
         label_encoders[category] = pickle.load(file)
 
-def index(request):
-    return render(request, 'recognition/index.html')
+def predict(request):
+    return render(request, 'recognition/predict.html')
 
 def game(request):
     return render(request, 'recognition/game.html')
