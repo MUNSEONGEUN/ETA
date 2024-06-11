@@ -1,9 +1,6 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}
     <title>About Us</title>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
@@ -34,11 +31,12 @@
             showText('english');
         });
     </script>
-</head>
-<body>
+   {% endblock %}
+   {% block content %}
     <article class="comic-sans kcc-dodamdodam">
         <div class="image-container">
-            <img src="{% static 'images/asl.PNG' %}" alt="ASL Image">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5_sRFGa3phE?si=11ZDVRQLOTKeDBdq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         </div>
         <div class="language-buttons">
             <button class="button" onclick="showText('english')">English</button>
@@ -48,11 +46,9 @@
             <!-- Initial content will be loaded by JavaScript -->
         </div>
         <div class="menu">
-            <a class="button" href="{% url 'index' %}">Home</a>
         </div>
     </article>
     <div class="logo">
-        <img src="{% static 'images/logo.jpg' %}" alt="Baby Sign Language Logo">
+        <img src="{% static 'images/logo.PNG' %}" alt="Baby Sign Language Logo">
     </div>
-</body>
-</html>
+    {% endblock %}
