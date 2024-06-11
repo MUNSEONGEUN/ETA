@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/learnging.css' %}">
     <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}"
@@ -24,19 +25,17 @@
                     <div class="menu time"><i class="fa-solid fa-clock"></i>Time</div>
                     <div class="menu questions"><i class="fa-solid fa-question"></i>Questions</div>
                     <div class="menu toys"><i class="fa-solid fa-gamepad"></i>Toys</div>
-                    <div class="menu transportations"><i class="fa-solid fa-car"></i>transportation</div>
+                    <div class="menu transportations"><i class="fa-solid fa-car"></i>Transportations</div>
                 </div>
             </div>
-
             <div class="video-area">
                 <div class="button-group"></div>
                 <div class="video"></div>
             </div>
         </div>
-
     </article>
-{% endblock%}
+{% endblock %}
+
 {% block scripts %}
-    <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>    
-    <script src="{% static 'js/learnging.js' %}"></script>
+    <script src="{% static 'js/learning.js' %}"></script>
 {% endblock %}

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 {% load static %}
-<html>    
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/mobile/m_base.css' %}"  type="text/css" media="screen and (max-width: 768px)">
     {% block head %}{% endblock %}    
 </head>
 <body id="body">
-    <div class="sticky">        
-        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
-        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
+    <div class="sticky">
         <div class="sticky-button">
             <a class="icon" href="/"><i class="fa-solid fa-house"></i></a>
         </div>
+        {% block sticky_links %}
+        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
+        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
+        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
+        {% endblock %}
     </div>
-    {% block content %}{% endblock %}    
-    {% block scripts %}{% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
     <script src="https://kit.fontawesome.com/3f436cc49a.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/base.js' %}"></script>
 </body>
