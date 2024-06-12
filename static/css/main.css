@@ -1,6 +1,6 @@
 body {
     background-color: #ECEAE4; /* 전체 배경색을 #ECEAE4로 설정 */
-    font-family: 'Comic Sans MS', sans-serif;
+    cursor: url("./hand2.cur"), default;
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,7 +8,9 @@ body {
     align-items: center;
     overflow-x: hidden;
 }
-
+a:hover{
+    cursor: url("./hand3.cur"), pointer;
+}
 .curtain {
     display: flex;
     flex-direction: column;
@@ -52,7 +54,7 @@ body {
 }
 
 .hero p {
-    font-size: 2vw; /* 화면 너비의 2% */
+    font-size: 2.5vw; /* 화면 너비의 2% */
     margin: 0 0 30px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

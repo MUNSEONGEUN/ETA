@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Comic Neue', cursive;
+    
     background-image: url('/static/images/playground.png');
     margin: 10px;
     background-color: #5B950A;
@@ -22,7 +22,15 @@ body {
     background-size: cover;
     color: #fff;    
 }
-
+div{
+    cursor: url("./hand2.cur"), default;
+}
+iframe:hover{
+    cursor: url("./hand3.cur"), pointer;
+}
+iframe{
+    cursor: url("./hand2.cur"), default;
+}
 article {
     display: flex;
     flex-direction: column;
@@ -85,6 +93,7 @@ article {
     background-color: #fff;
     color: #000;
     transform: scale(1.05);
+    cursor: url("./hand3.cur"), pointer;
 }
 
 .side-bar .category .fa-solid {
@@ -138,6 +147,7 @@ article {
     background-color: #55CBCD;
     color: white;
     text-align: center;
+    cursor: url("./hand3.cur"), pointer;
 }
 
 .clicked {

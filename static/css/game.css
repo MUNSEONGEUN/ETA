@@ -1,7 +1,5 @@
 /* 전체적인 레이아웃 및 폰트 설정 */
-* {
-    font-family: 'Comic Sans MS';
-}
+
 
 body {
     text-align: center;
@@ -150,6 +148,7 @@ canvas {
     color: #ffffff;
     background-color: #ff7f50;
     transform: scale(1.1);
+    cursor: url("./hand3.cur"), pointer;
 }
 
 /* 선택된 버튼 스타일 */
