@@ -40,13 +40,6 @@ def game(request):
 def about(request):
     return render(request, 'recognition/about.html')
 
-def calculate_scores(y_true, y_pred):
-    precision = precision_score(y_true, y_pred, average='weighted', zero_division=1)
-    recall = recall_score(y_true, y_pred, average='weighted', zero_division=1)
-    f1 = f1_score(y_true, y_pred, average='weighted', zero_division=1)
-    accuracy = accuracy_score(y_true, y_pred)
-    return precision, recall, f1, accuracy
-
 def predict_sign(request):
     if request.method == 'POST':
         try:
@@ -70,7 +63,7 @@ def predict_sign(request):
             top_class = label_encoder.inverse_transform([top_index])[0]
             top_prob = prediction_probs[0][top_index]
 
-            threshold = 0.5  # 예측 신뢰도 임계값
+            threshold = 0.4  # 예측 신뢰도 임계값
             final_prediction = top_class if top_prob > threshold else 'Try Again'
 
             return JsonResponse({
