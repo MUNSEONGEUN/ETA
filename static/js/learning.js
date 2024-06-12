@@ -150,20 +150,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     
-    document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const sidebar = document.querySelector(".side-bar");
-    
-        hamburger.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-        });
-        document.addEventListener("click",()=>{
-            
-        })
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const sidebar = document.querySelector(".side-bar");
+
+    hamburger.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
     });
-document.addEventListener("click",(e)=>{
-    const sidebar = document.querySelector(".side-bar");    
-    if(e.target.className == "line" | e.target.className == "hamburger" | e.target.classList.contains("side-bar")) return;
-    sidebar.classList.remove("open")
-  
-})
+});
+
+document.addEventListener("click", (e) => {
+    const sidebar = document.querySelector(".side-bar");
+    if (e.target.className == "line" || e.target.className == "hamburger" || e.target.classList.contains("side-bar")) return;
+    sidebar.classList.remove("open");
+});
