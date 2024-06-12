@@ -36,9 +36,7 @@ body {
     background-color: #5B950A;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #fff;
-    background-size: cover;
-    color: #fff;
+    color: #fff;    
 }
 
 
@@ -48,8 +46,7 @@ article {
     position: relative;
     margin-top: 15vh;
     justify-content: start;
-    animation: slideDown 1s ease-out;
-    animation: slideDown 1s ease-out;
+    animation: slideDown 1s ease-out;    
 }
 
 
@@ -71,8 +68,7 @@ article {
 .side-bar {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    flex-direction: column;
+    flex-direction: column;    
     padding: 7px;
 }
 
@@ -86,20 +82,15 @@ article {
     background-color: #000;
     transition: transform 0.3s, background-color 0.3s, color 0.3s;
     display: flex;
-    align-items: center;
-    transition: transform 0.3s, background-color 0.3s, color 0.3s;
-    display: flex;
-    align-items: center;
+    align-items: center;    
 }
 
 
 .side-bar .category div:nth-child(1) {
-    color: #ffb3b3;
-    color: #ffb3b3;
+    color: #ffb3b3;    
 }
 .side-bar .category div:nth-child(2) {
-    color: #ffd9b3;
-    color: #ffd9b3;
+    color: #ffd9b3;    
 }
 .side-bar .category div:nth-child(3) {
     color: #ffffb3;
@@ -176,6 +167,9 @@ article {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+    min-width: 50px;
+    box-sizing: border-box;
+    margin: 3px 3px;
 }
 
 .video-area .button-group div:hover {
@@ -195,6 +189,6 @@ article {
     margin: auto;
 }
 
-.video {
+.video {    
     display: flex;
 }
