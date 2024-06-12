@@ -183,12 +183,24 @@ article {
     color: navy;
 }
 .video-area iframe {
-    margin-right: 20px;
-    margin-bottom: 17px;
-    Min-width : 20px;
-    margin: auto;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+
 }
 
 .video {    
     display: flex;
+}
+@media (max-width: 768px) {
+    .side-bar {
+        flex-basis: 100%;
+    }
+    .content {
+        flex-direction: column;
+    }
+    .video-area .button-group {
+        justify-content: space-around; /* 버튼들이 겹치지 않도록 조정 */
+    }
 }
