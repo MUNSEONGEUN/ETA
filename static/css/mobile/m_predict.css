@@ -25,7 +25,7 @@ body{
 }
 #outputCanvas{
     width: 95vw;
-    height: calc(95vw/8*6);
+    height: calc(95vw/6*8);
 }
 #predicted-word {
     top: -48px;
