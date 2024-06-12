@@ -3,34 +3,6 @@
 {% block head %}
     <title>About Us</title>    
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    <script>
-        function showText(language) {
-            const englishText = `
-                <h2>About us</h2>
-                <p>Our project is a program that translates the American sign language ASL into text, and is a 'Children's Sign Language Education Program' that helps children. Using this program, we designed it so that children can educate the deaf about sign language through games, translation functions, and watching sign language videos.</p>
-                <h3>What's ASL?</h3>
-                <p>American Sign Language (ASL) is a sign language that is spoken predominantly among deaf communities in the United States and Canada. ASL has its own grammar and vocabulary, and unlike spoken languages, it conveys meaning by using the shapes, positions, movements, and facial expressions of hands. ASL is a language independent of English and is used as a major means of communication among many deaf people in the United States and Canada. </p>
-                <h3>Why Baby Signing?</h3>
-                <p>Learning sign language from an early age provides several advantages for both farmers and non-farmers. These advantages include language development, IQ proficiency, improved social skills, and parental ties. In addition, it is greatly helpful in promoting understanding and cooperation in communication between farmers and non-farm children.</p>
-            `;
-
-        const koreanText = `
-            <h2>About Us</h2>
-            <p>Learn ASL은 청각이 정상인 사람, 난청인 사람, 청각 장애인이 소통할 수 있게 해주는 정보 웹사이트입니다. 이 웹사이트는 지역 사회 행사, "ASL 배우기" 팁, 청각 장애인 역사 정보, 일반 ASL 도구, ASL 비디오, ASL 게임, ASL에 관한 흥미로운 사실, ASL 신화, 그리고 참여 방법, 기부 방법 및 인공 와우에 대한 진실에 대한 정보를 제공합니다.</p>
-            <h3>ASL이란 무엇인가요?</h3>
-            <p>ASL은 American Sign Language의 약자입니다. 미국에는 다양한 단어에 대해 서부 해안과 동부 해안 기호가 있습니다. American Sign Language의 가장 기본적인 단계는 손가락 철자를 배우는 것입니다.</p>
-            <h3>손가락 철자란 무엇인가요?</h3>
-            <p>손가락 철자는 American Sign Language를 통해 소통하는 한 방법입니다. 종이와 연필을 사용하는 대신 손가락을 사용하여 단어나 글자를 철자하는 점을 제외하면 글쓰기와 유사합니다. 알파벳과 숫자의 모든 글자마다 인식할 수 있는 손가락 철자 기호가 있습니다. 손가락 철자에 능숙해지면 모든 것을 하나씩 철자하는 것보다 난청인 또는 청각 장애인과 소통하기 훨씬 쉬운 더 큰 기호로 넘어갈 준비가 된 것입니다.</p>
-        `;
-
-
-        document.getElementById('content').innerHTML = language == 'english' ? englishText : koreanText;
-    }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            showText('english');
-        });
-    </script>
 {% endblock %}
 
 {% block content %}
@@ -47,8 +19,11 @@
         </div>
 
     </article>
-    <!-- <div class="logo">
-        <img src="{% static 'images/logo.jpg' %}" alt="Baby Sign Language Logo">
-    </div> -->
+    <div class="logo">
+        <img src="{% static 'images/logo.PNG' %}" alt="Baby Sign Language Logo">
+    </div>
 
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/about.js' %}"></script>
 {% endblock %}

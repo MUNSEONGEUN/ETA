@@ -100,13 +100,20 @@ article {
     margin-right: 7px;
 }
 
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    width: calc(100% - 220px); /* 220px는 카테고리 너비와 약간의 여백 */
+}
+
 .video-area {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: calc(100% - 220px); /* 220px는 카테고리 너비와 약간의 여백 */
+    width: 100%;
 }
 
 .video-area .button-group {
@@ -169,7 +176,7 @@ article {
     .content {
         flex-direction: column;
     }
-    .video-area {
+    .main-content {
         width: 100%;
     }
     .video-area .button-group {
