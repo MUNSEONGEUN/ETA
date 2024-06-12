@@ -20,7 +20,7 @@ body {
     background-color: #5B950A;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #fff;
+    color: #fff;    
 }
 
 article {
@@ -29,7 +29,7 @@ article {
     position: relative;
     margin-top: 15vh;
     justify-content: start;
-    animation: slideDown 1s ease-out;
+    animation: slideDown 1s ease-out;    
 }
 
 .title {
@@ -44,14 +44,12 @@ article {
 .content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
-    align-items: flex-start;
 }
 
 .side-bar {
-    flex: 1 1 20%;
+    flex: 1;
+    max-width: 200px; /* 카테고리 너비 고정 */
     display: flex;
     flex-direction: column;
     padding: 7px;
@@ -66,7 +64,7 @@ article {
     background-color: #000;
     transition: transform 0.3s, background-color 0.3s, color 0.3s;
     display: flex;
-    align-items: center;
+    align-items: center;    
 }
 
 .side-bar .category div:nth-child(1) { color: #ffb3b3; }
@@ -94,20 +92,20 @@ article {
 }
 
 .video-area {
-    flex: 3 1 75%;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - 220px); /* 220px는 카테고리 너비와 약간의 여백 */
 }
 
 .video-area .button-group {
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
     font-weight: bold;
     cursor: pointer;
     text-align: center;
@@ -145,20 +143,26 @@ article {
     max-width: 800px;
     height: auto;
     margin: 0 auto;
-
 }
 
-.video {    
+.video {
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
+
 @media (max-width: 768px) {
     .side-bar {
         flex-basis: 100%;
+        max-width: none;
     }
     .content {
         flex-direction: column;
     }
+    .video-area {
+        width: 100%;
+    }
     .video-area .button-group {
-        justify-content: space-around; /* 버튼들이 겹치지 않도록 조정 */
+        justify-content: space-around;
     }
 }
