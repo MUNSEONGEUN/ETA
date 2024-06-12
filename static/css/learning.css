@@ -159,6 +159,7 @@ article {
     width: 100%;
     max-width: 800px;
     height: auto;
+    aspect-ratio: 16 / 9;
     margin: 0 auto;
 }
 
@@ -166,6 +167,10 @@ article {
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+.hamburger {
+    display: none; /* 기본적으로 숨김 */
 }
 
 @media (max-width: 768px) {
@@ -182,4 +187,12 @@ article {
     .video-area .button-group {
         justify-content: space-around;
     }
+    .hamburger {
+        display: block; /* 작은 화면에서만 보임 */
+    }
+}
+
+.title-container {
+    width: calc(100% - 220px); /* 카테고리 너비와 일치하도록 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
 }
