@@ -136,5 +136,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedCategory = title.textContent;
         const selectedVideo = e.target.textContent;
         video.innerHTML = json[selectedCategory][selectedVideo];
+        resizeVideo();
     });
+
+    window.addEventListener("resize", resizeVideo);
+
+    function resizeVideo() {
+        const iframe = document.querySelector(".video iframe");
+        if (iframe) {
+            const width = video.clientWidth;
+            iframe.style.width = `${width}px`;
+            iframe.style.height = `${(width * 9) / 16}px`;  // 16:9 비율 유지
+        }
+    }
 });
