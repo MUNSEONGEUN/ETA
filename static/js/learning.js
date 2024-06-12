@@ -108,57 +108,62 @@ document.addEventListener("DOMContentLoaded", () => {
         'train': '<iframe width="800" height="450" src="https://www.youtube.com/embed/yne0A8Z7ijU?si=gYiWk_HsDYVYKpfE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
         'Motorcycle': '<iframe width="800" height="450" src="https://www.youtube.com/embed/suzyI59Ryh0?si=S_32iNVaArYQKNSf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
         'Helicopter': '<iframe width="800" height="450" src="https://www.youtube.com/embed/hdiSoTueeN0?si=aQa0zCAtoUHWWiMy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'}}
-        
-    category.addEventListener("click", (e) => {
-        if (!e.target.className.includes("menu")) return;
-
-        const menu = e.target.className.split(" ")[1];
-        const keys = Object.keys(json[menu]);
-        title.textContent = menu;
-
-        group.innerHTML = "";
-        keys.forEach(key => {
-            const button = document.createElement("div");
-            button.textContent = key;
-            button.className = "button";
-            group.appendChild(button);
+        category.addEventListener("click", (e) => {
+            if (!e.target.className.includes("menu")) return;
+    
+            const menu = e.target.className.split(" ")[1];
+            const keys = Object.keys(json[menu]);
+            title.textContent = menu;
+    
+            group.innerHTML = "";
+            keys.forEach(key => {
+                const button = document.createElement("div");
+                button.textContent = key;
+                button.className = "button";
+                group.appendChild(button);
+            });
         });
-    });
-
-    group.addEventListener("click", (e) => {
-        if (e.target.className !== "button") return;
-
-        group.querySelectorAll(".button").forEach(button => {
-            button.className = "button";
+    
+        group.addEventListener("click", (e) => {
+            if (e.target.className !== "button") return;
+    
+            group.querySelectorAll(".button").forEach(button => {
+                button.className = "button";
+            });
+            e.target.className += " clicked";
+    
+            const selectedCategory = title.textContent;
+            const selectedVideo = e.target.textContent;
+            video.innerHTML = json[selectedCategory][selectedVideo];
+            resizeVideo();
         });
-        e.target.className += " clicked";
-
-        const selectedCategory = title.textContent;
-        const selectedVideo = e.target.textContent;
-        video.innerHTML = json[selectedCategory][selectedVideo];
-        resizeVideo();
-    });
-
-    window.addEventListener("resize", resizeVideo);
-
-    function resizeVideo() {
-        const iframe = document.querySelector(".video iframe");
-        if (iframe) {
-            const width = video.clientWidth;
-            iframe.style.width = `${width}px`;
-            iframe.style.height = `${(width * 9) / 16}px`;  // 16:9 비율 유지
+    
+        window.addEventListener("resize", resizeVideo);
+    
+        function resizeVideo() {
+            const iframe = document.querySelector(".video iframe");
+            if (iframe) {
+                const width = video.clientWidth;
+                iframe.style.width = `${width}px`;
+                iframe.style.height = `${(width * 9) / 16}px`;  // 16:9 비율 유지
+            }
         }
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const sidebar = document.querySelector(".side-bar");
-
-    hamburger.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
     });
-    document.addEventListener("click",()=>{
-        
-    })
-});
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.querySelector(".hamburger");
+        const sidebar = document.querySelector(".side-bar");
+    
+        hamburger.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+        });
+        document.addEventListener("click",()=>{
+            
+        })
+    });
+document.addEventListener("click",(e)=>{
+    const sidebar = document.querySelector(".side-bar");    
+    if(e.target.className == "line" | e.target.className == "hamburger" | e.target.classList.contains("side-bar")) return;
+    sidebar.classList.remove("open")
+  
+})
