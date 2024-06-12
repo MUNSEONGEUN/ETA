@@ -3,10 +3,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/learning.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}"
-    type="text/css" 
-    media="screen and (max-width: 768px)">
-{% endblock%}
+    <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}" type="text/css" media="screen and (max-width: 768px)">
+{% endblock %}
 {% block content %}
     <button class="hamburger">
         <div class="line"></div>
@@ -14,7 +12,6 @@
         <div class="line"></div>
     </button>
     <article>
-        <div class="title">Select category</div>
         <div class="content">            
             <div class="side-bar">
                 <div class="category">
@@ -33,9 +30,11 @@
                     <div class="menu transportations"><i class="fa-solid fa-car"></i>Transportations</div>
                 </div>
             </div>
-            <div class="video-area">
-                <div class="button-group"></div>
-                <div class="video">
+            <div class="main-content">
+                <div class="title">Select category</div>
+                <div class="video-area">
+                    <div class="button-group"></div>
+                    <div class="video"></div>
                 </div>
             </div>
         </div>
