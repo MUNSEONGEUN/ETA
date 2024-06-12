@@ -158,7 +158,7 @@ article {
 .video-area .button-group {
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     align-items: center; /* 세로 중앙 정렬 */
     justify-content: center; /*가로 중앙 정렬*/
     font-weight: bold;
@@ -173,6 +173,7 @@ article {
     padding: 7px;
     background-color: #fff;
     cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
 }
@@ -187,10 +188,10 @@ article {
 
     color: navy;
 }
-
 .video-area iframe {
     margin-right: 20px;
     margin-bottom: 17px;
+    Min-width : 20px;
     margin: auto;
 }
 
