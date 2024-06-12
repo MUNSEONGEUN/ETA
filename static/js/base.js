@@ -26,9 +26,11 @@ sticky.addEventListener("mouseover",()=>{
 })
 
 sticky.addEventListener("mouseout",()=>{
-    if(window.innerWidth > 784)
-    [...sticky.querySelectorAll(".link")].map(e=>{
-        // sticky.style.height = "50px"
-        e.classList.add("hidden")
-    })
+    if(window.innerWidth > 784){        
+        console.log("?");
+        [...sticky.querySelectorAll(".link")].map(e=>{
+            // sticky.style.height = "50px"
+            e.classList.add("hidden")
+        })
+    }
 })

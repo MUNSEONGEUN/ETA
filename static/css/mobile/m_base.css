@@ -3,14 +3,14 @@
     left: 0;
     border-radius: 0;
     width: 100vw;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-around;
 }
 .sticky:hover{
     height: 50px;
     transition: unset;
 }
-.sticky:hover .link:nth-child(1){
+.sticky:hover .link:nth-child(3){
     transform: unset;
 }
 .sticky:hover .link:nth-child(2){
