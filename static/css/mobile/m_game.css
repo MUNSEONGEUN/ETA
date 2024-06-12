@@ -1,6 +1,6 @@
 h1 {
     width: 95vw;
-    height: 12vh;
+    height: 12%;
     box-sizing: border-box;
     
     font-size: 2em;
@@ -9,11 +9,11 @@ h1 {
 }
 .wrapper {
     align-items: unset;
-    height: 88vh;
+    height: 88%;
 }
 #game-area {
     width: 95vw;
-    height: 69vh;
+    height: 83%;
 }
 #gameCanvas{
     width: 100%;
