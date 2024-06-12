@@ -31,6 +31,7 @@
     border-radius: 2px;
     transition: all 0.3s linear;
     position: relative;
+    min-width: 20px;
 }
 
 .hamburger div:nth-child(1) {
@@ -74,6 +75,9 @@
 .menu {
     margin: 10px 0;
     cursor: pointer;
+}
+.video-area .button-group div{
+    margin: unset;
 }
 
 @media screen and (max-width: 768px) {
