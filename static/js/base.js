@@ -35,9 +35,13 @@ sticky.addEventListener("mouseout",()=>{
     }
 })
 
-let vh = window.innerHeight = 0.01;
+let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
-document.querySelector('h1').textContent = window.innerHeight
+// document.querySelector('h1').textContent = window.innerHeight
+// function a(){
+//     document.querySelector('h1').textContent = window.innerHeight
+// }
+// a()
 // resize
 window.addEventListener('resize', () => {
     let vh = window.innerHeight * 0.01;
