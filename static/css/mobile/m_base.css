@@ -10,7 +10,7 @@
     height: 50px;
     transition: unset;
 }
-.sticky:hover .link:nth-child(1){
+.sticky:hover .link:nth-child(3){
     transform: unset;
 }
 .sticky:hover .link:nth-child(2){
