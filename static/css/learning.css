@@ -16,29 +16,12 @@
 body {
     font-family: 'Comic Neue', cursive;
     background-image: url('/static/images/playground.png');
-}
-/* Keyframes for the opening animation */
-@keyframes slideDown {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-body {
-    font-family: 'Comic Neue', cursive;
-    background-image: url('/static/images/playground.png');
     margin: 10px;
     background-color: #5B950A;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;    
 }
-
 
 article {
     display: flex;
@@ -49,7 +32,6 @@ article {
     animation: slideDown 1s ease-out;    
 }
 
-
 .title {
     font-size: 62px;
     color: #FFFFFF;
@@ -59,19 +41,19 @@ article {
     margin-bottom: 20px;
 }
 
-
 .content {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .side-bar {
     flex: 1;
+    max-width: 200px; /* 카테고리 너비 고정 */
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     padding: 7px;
 }
-
 
 .side-bar .category div {
     padding: 7px;
@@ -85,47 +67,19 @@ article {
     align-items: center;    
 }
 
-
-.side-bar .category div:nth-child(1) {
-    color: #ffb3b3;    
-}
-.side-bar .category div:nth-child(2) {
-    color: #ffd9b3;    
-}
-.side-bar .category div:nth-child(3) {
-    color: #ffffb3;
-}
-.side-bar .category div:nth-child(4) {
-    color: #d9ffb3;
-}
-.side-bar .category div:nth-child(5) {
-    color: #b3ffb3;
-}
-.side-bar .category div:nth-child(6) {
-    color: #b3ffd9;
-}
-.side-bar .category div:nth-child(7) {
-    color: #b3ffff;
-}
-.side-bar .category div:nth-child(8) {
-    color: #b3d9ff;
-}
-.side-bar .category div:nth-child(9) {
-    color: #b3b3ff;
-}
-.side-bar .category div:nth-child(10) {
-    color: #d9b3ff;
-}
-.side-bar .category div:nth-child(11) {
-    color: #abdee6;
-}
-.side-bar .category div:nth-child(12) {
-    color: #ffd9b3;
-}
-.side-bar .category div:nth-child(13) {
-    color: #f3b0c3;
-}
-
+.side-bar .category div:nth-child(1) { color: #ffb3b3; }
+.side-bar .category div:nth-child(2) { color: #ffd9b3; }
+.side-bar .category div:nth-child(3) { color: #ffffb3; }
+.side-bar .category div:nth-child(4) { color: #d9ffb3; }
+.side-bar .category div:nth-child(5) { color: #b3ffb3; }
+.side-bar .category div:nth-child(6) { color: #b3ffd9; }
+.side-bar .category div:nth-child(7) { color: #b3ffff; }
+.side-bar .category div:nth-child(8) { color: #b3d9ff; }
+.side-bar .category div:nth-child(9) { color: #b3b3ff; }
+.side-bar .category div:nth-child(10) { color: #d9b3ff; }
+.side-bar .category div:nth-child(11) { color: #abdee6; }
+.side-bar .category div:nth-child(12) { color: #ffd9b3; }
+.side-bar .category div:nth-child(13) { color: #f3b0c3; }
 
 .side-bar .category div:hover {
     background-color: #fff;
@@ -133,17 +87,17 @@ article {
     transform: scale(1.05);
 }
 
-
 .side-bar .category .fa-solid {
     margin-right: 7px;
 }
 
 .video-area {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 10;
     flex-direction: column;
+    width: calc(100% - 220px); /* 220px는 카테고리 너비와 약간의 여백 */
 }
 
 .video-area .button-group {
@@ -151,10 +105,11 @@ article {
     flex-direction: row;
     margin-bottom: 20px;
     align-items: center; /* 세로 중앙 정렬 */
-    justify-content: center; /*가로 중앙 정렬*/
+    justify-content: center; /* 가로 중앙 정렬 */
     font-weight: bold;
     cursor: pointer;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .video-area .button-group div {
@@ -177,30 +132,37 @@ article {
     color: white;
     text-align: center;
 }
-.clicked{
-    background-color: #71c5d0;
 
+.clicked {
+    background-color: #71c5d0;
     color: navy;
 }
+
 .video-area iframe {
     width: 100%;
     max-width: 800px;
     height: auto;
     margin: 0 auto;
-
 }
 
-.video {    
+.video {
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
+
 @media (max-width: 768px) {
     .side-bar {
         flex-basis: 100%;
+        max-width: none;
     }
     .content {
         flex-direction: column;
     }
+    .video-area {
+        width: 100%;
+    }
     .video-area .button-group {
-        justify-content: space-around; /* 버튼들이 겹치지 않도록 조정 */
+        justify-content: space-around;
     }
 }
