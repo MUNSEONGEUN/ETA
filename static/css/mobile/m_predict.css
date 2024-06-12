@@ -1,11 +1,31 @@
+body{
+    width: unset;
+    height: unset;
+    margin: unset;
+}
+#text-input{
+    width: 95%;
+    margin: auto;
+}
+.title {
+    font-size: 25px;
+}
 .send-button {
     top: 46%;
+    right: 64px;
 }
 #clear-button {
     top: 46%;
+    right: 20px;
+}
+.wrapper{
+    justify-content: unset;
+    margin-top: 10%;
+    height: unset;
 }
 #outputCanvas{
-    width: 95vw;    
+    width: 95vw;
+    height: calc(95vw/8*6);
 }
 #predicted-word {
     top: -48px;
