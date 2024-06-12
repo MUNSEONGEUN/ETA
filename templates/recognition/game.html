@@ -4,16 +4,13 @@
 {% block head %}
     <title>Sign Language Game</title>    
     <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mobile/m_game.css' %}" media="screen and (max-width: 768px)">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 {% endblock %}
 
-{% block sticky_links %}
-    <a id="index" class="icon link hidden" href="{% url 'index' %}"><i class="fa-solid fa-hand"></i></a>
-    <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
-{% endblock %}
 
 {% block content %}
     <h1>Sign Language Game</h1>
@@ -33,7 +30,7 @@
                 <button id="start-button" class="category-button">Start Game</button>
             </div>
             <div id="camera-area">
-                <canvas id="outputCanvas"></canvas>
+                <canvas id="outputCanvas" width="800" height="600"></canvas>
             </div>
         </div> 
     </div>

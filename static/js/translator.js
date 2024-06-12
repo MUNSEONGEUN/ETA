@@ -153,8 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
         samePredictionCount = 0;
         lastPrediction = '';
         document.getElementById('word').innerText = ''; // 현재 예측된 단어 초기화
-        document.getElementById('text-input').value = '│'; // 텍스트 입력란 초기화
-        cursorVisible = true; // 커서 초기 상태 설정
 
         // 모든 버튼의 활성 상태 해제
         document.querySelectorAll('.category-button').forEach(button => {

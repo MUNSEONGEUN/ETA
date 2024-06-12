@@ -4,17 +4,11 @@
 {% block head %}
     <title>Sign Language Translator</title>
     <link rel="stylesheet" href="{% static 'css/predict.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile/m_predict.css' %}" type="text/css" media="screen and (max-width: 768px)">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-{% endblock %}
-
-{% block sticky_links %}
-    <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-    <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
-{% endblock %}
-
-{% block content %}
+<body>
     <p class="title">Sign Language Translator</p>
     <div class="button-container">
         <div id="text-area" class="text-area">
