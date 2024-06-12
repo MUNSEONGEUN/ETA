@@ -26,9 +26,24 @@ sticky.addEventListener("mouseover",()=>{
 })
 
 sticky.addEventListener("mouseout",()=>{
-    if(window.innerWidth > 784)
-    [...sticky.querySelectorAll(".link")].map(e=>{
-        // sticky.style.height = "50px"
-        e.classList.add("hidden")
-    })
+    if(window.innerWidth > 784){        
+        console.log("?");
+        [...sticky.querySelectorAll(".link")].map(e=>{
+            // sticky.style.height = "50px"
+            e.classList.add("hidden")
+        })
+    }
 })
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+// document.querySelector('h1').textContent = window.innerHeight
+// function a(){
+//     document.querySelector('h1').textContent = window.innerHeight
+// }
+// a()
+// resize
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});

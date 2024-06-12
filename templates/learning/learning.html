@@ -3,10 +3,16 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/learning.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}" type="text/css" media="screen and (max-width: 768px)">
-{% endblock %}
-
+    <link rel="stylesheet" href="{% static 'css/mobile/m_learning.css' %}"
+    type="text/css" 
+    media="screen and (max-width: 768px)">
+{% endblock%}
 {% block content %}
+    <button class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
     <article>
         <div class="title">Select category</div>
         <div class="content">            
@@ -14,7 +20,7 @@
                 <div class="category">
                     <div class="menu alphabet"><i class="fa-solid fa-arrow-down-a-z"></i>Alphabet</div>
                     <div class="menu numbers"><i class="fa-solid fa-list-ol"></i>Numbers</div>
-                    <div class="menu words"><i class="fa-solid fa-message"></i></i>Words</div>
+                    <div class="menu words"><i class="fa-solid fa-message"></i>Words</div>
                     <div class="menu phrases"><i class="fa-solid fa-quote-left"></i>Phrase</div>
                     <div class="menu animal"><i class="fa-solid fa-cat"></i>Animal</div>
                     <div class="menu colors"><i class="fa-solid fa-palette"></i>Color</div>
@@ -29,7 +35,8 @@
             </div>
             <div class="video-area">
                 <div class="button-group"></div>
-                <div class="video"></div>
+                <div class="video">
+                </div>
             </div>
         </div>
     </article>
@@ -37,4 +44,14 @@
 
 {% block scripts %}
     <script src="{% static 'js/learning.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.querySelector(".hamburger");
+            const sidebar = document.querySelector(".side-bar");
+
+            hamburger.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+            });
+        });
+    </script>
 {% endblock %}

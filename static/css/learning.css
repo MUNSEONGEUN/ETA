@@ -119,8 +119,8 @@ article {
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /*가로 중앙 정렬*/
     font-weight: bold;
     cursor: pointer;
     text-align: center;
@@ -133,6 +133,7 @@ article {
     padding: 7px;
     background-color: #fff;
     cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
 }
@@ -147,12 +148,10 @@ article {
     background-color: #71c5d0;
     color: navy;
 }
-
 .video-area iframe {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    margin: 0 auto;
+    margin-right: 20px;
+    margin-bottom: 17px;
+    margin: auto;
 }
 
 .video {
