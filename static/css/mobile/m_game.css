@@ -1,0 +1,28 @@
+h1 {
+    width: 95vw;
+    height: 12vh;
+    box-sizing: border-box;
+    
+    font-size: 2em;
+    text-align: center;
+    line-height: 2em;
+}
+.wrapper {
+    align-items: unset;
+    height: 88vh;
+}
+#game-area {
+    width: 95vw;
+    height: 69vh;
+}
+#gameCanvas{
+    width: 100%;
+    height: 100%;
+
+}
+.button-container{
+    bottom: 59px;
+}
+.category-button {
+    padding: 7px 20px;
+}
