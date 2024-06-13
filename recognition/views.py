@@ -48,24 +48,28 @@ def predict_sign(request):
             landmarks = np.array(body['landmarks']).flatten()
             category = body['category']
 
-            if len(landmarks) == 126:
-                landmarks = landmarks[:63]
-            elif len(landmarks) != 63:
+            # 랜드마크 데이터의 길이 확인
+            if len(landmarks) != 63:
                 return JsonResponse({'error': 'Invalid number of landmarks'}, status=400)
 
+            # 데이터를 2차원 배열로 변환
             landmarks = landmarks.reshape(1, -1)
 
+            # 해당 카테고리의 모델과 라벨 인코더 가져오기
             model = models[category]
             label_encoder = label_encoders[category]
 
+            # 예측 확률 계산
             prediction_probs = model.predict_proba(landmarks)
             top_index = np.argmax(prediction_probs[0])
             top_class = label_encoder.inverse_transform([top_index])[0]
             top_prob = prediction_probs[0][top_index]
 
-            threshold = 0.4  # 예측 신뢰도 임계값
+            # 예측 신뢰도 임계값 설정
+            threshold = 0.4
             final_prediction = top_class if top_prob > threshold else 'Try Again'
 
+            # 결과 반환
             return JsonResponse({
                 'predicted_label': str(top_class),
                 'probability': float(top_prob),
@@ -78,7 +82,6 @@ def predict_sign(request):
             return JsonResponse({'error': 'Prediction error', 'details': error_message}, status=500)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
-
 
 def get_word_labels(request):
     word_labels = list(label_encoders['words'].classes_)
