@@ -51,10 +51,9 @@ article {
     padding: 10px 20px;
     font-size: 1em;
     font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 1px 1.2px grey;
+    color: #000000;
     background-color: #Fff4bc;
-    border: 3px solid #Fff4bc;
+    border: 0px solid #Fff4bc;
     text-align: center;
     text-decoration: none;
     border-radius: 8px;
@@ -64,7 +63,8 @@ article {
 }
 
 .button:hover {
-    background-color: #Fff4bc;
+    background-color: #ffde3b;
+    border: 0px solid #ffde3b;
     transform: translateY(-3px);
 }
 
@@ -175,8 +175,4 @@ header {
 
 .content {
     padding-top: 60px;
-}
-
-footer {
-    width: 100%;
 }
