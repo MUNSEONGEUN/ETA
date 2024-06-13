@@ -1,19 +1,25 @@
 body {
-    
     text-align: center;
     padding: 0;
     margin: 0;
     overflow: hidden; /* 스크롤 비활성화 */
     position: relative;
-    background-image: url('/static/images/predict.png'); /* 이미지 경로 설정 */
-    background-size: 100vw 110vh; /* 배경 이미지 크기 조정 */
+    background-size: cover; /* 비율을 유지하며 화면을 채우도록 설정 */
     background-repeat: no-repeat;
-    background-position: center;
-    width: 90vw; /* 뷰포트 너비의 90%로 고정 */
-    height: 90vh; /* 뷰포트 높이의 90%로 고정 */
+    background-position: center; /* 배경 이미지를 중앙에 위치시킴 */
+    width: 100vw; /* 뷰포트 너비로 설정 */
+    height: 100vh; /* 뷰포트 높이로 설정 */
     margin: auto; /* 가운데 정렬 */
+    background-image: url('/static/images/predict.png'); /* 기본 이미지 경로 설정 */
 }
-button:hover{
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: url('/static/images/mobile_predict.png'); /* 모바일용 이미지 경로 설정 */
+    }
+}
+
+button:hover {
     cursor: url("./hand3.cur"), pointer;
 }
 
@@ -49,8 +55,6 @@ button:hover{
 
 #camera-area {
     position: relative;
-    /* width: 640px; 
-    height: 480px; */
     margin-bottom: 20px; /* 카메라 아래 공간 확보 */
 }
 
@@ -122,8 +126,8 @@ button:hover{
 }
 
 #outputCanvas {
-    width: 640;
-    height: 480;
+    width: 640px;
+    height: 480px;
 }
 
 canvas {
@@ -141,7 +145,6 @@ canvas {
 /* 버튼 스타일 */
 .category-button {
     background-color: #ffffff;
-    
     color: midnightblue;
     padding: 10px 20px;
     font-size: 16px;
