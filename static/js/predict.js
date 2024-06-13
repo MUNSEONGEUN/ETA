@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctx = canvas.getContext('2d');
     const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-    let category = 'alphabet'; // 기본 카테고리 설정
+    let category = 'words'; // 기본 카테고리 설정
     let lastPrediction = '';
     let samePredictionCount = 0;
     const minPredictionCount = 30; // 같은 단어로 인식된 최소 횟수
-    const alphabetThreshold = 0.2; // 알파벳 임계값 25%
-    const otherThreshold = 0.5; // 다른 카테고리 임계값 50%
+    const alphabetThreshold = 0.2; // 알파벳 임계값
+    const otherThreshold = 0.5; // 다른 카테고리 임계값
     let cursorVisible = true; // 커서 가시성 상태
 
     // Mediapipe 설정
@@ -22,19 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
     }});
     hands.setOptions({
-        maxNumHands: 2,
+        maxNumHands: 1,
         modelComplexity: 1,
-        minDetectionConfidence: 0.5,
-        minTrackingConfidence: 0.5
+        minDetectionConfidence: 0.3,
+        minTrackingConfidence: 0.3
     });
 
+    // 장치 감지
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // 카메라 설정
     const camera = new Camera(video, {
         onFrame: async () => {
             await hands.send({image: video});
             drawVideoAndResults();
         },
-        width: 640,
-        height: 480
+        width: isMobile ? 360 : 640,  // 모바일일 경우 해상도를 낮춤
+        height: isMobile ? 480 : 480
     });
     camera.start();
 
