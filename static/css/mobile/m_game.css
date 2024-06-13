@@ -20,6 +20,10 @@ h1 {
     height: 100%;
 
 }
+#outcanvas{
+    width: 100%;
+    height: calc(100%/8*6);
+}
 .button-container{
     bottom: 59px;
 }
