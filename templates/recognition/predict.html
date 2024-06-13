@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block content %}
@@ -25,7 +24,7 @@
         <div id="camera-area">
             <div id="predicted-word">Predicted Word: <span id="word"></span></div>
             <canvas id="outputCanvas" width="640" height="480"></canvas>
-            <button id="info-button" class="info-button"><i class="fa-solid fa-question"></i></button>
+            <button id="info-button" class="info-button">?</button>
         </div>
         <div class="category-buttons">
             <button class="category-button" onclick="setMode('alphabet')">Alphabet</button>
@@ -36,17 +35,8 @@
     <div id="popup" class="popup hidden">
         <div class="popup-content">
             <span class="close-button">&times;</span>
-            <h2>사용법 예시</h2>
-            <div class="image-container">
-                <div class="image-item">
-                    <p>HELLO</p>
-                    <img src="{% static 'images/example_image1.png' %}" alt="Example Sign">
-                </div>
-                <div class="image-item">
-                    <p>I LOVE YOU</p>
-                    <img src="{% static 'images/example_image2.png' %}" alt="Example Sign">
-                </div>
-            </div>
+            <h2 id="popup-title">How to Use</h2>
+            <div id="video-container" class="video-container"></div>
         </div>
     </div>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
