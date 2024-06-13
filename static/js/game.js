@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameCanvas = document.getElementById('gameCanvas');
     const gameCtx = gameCanvas.getContext('2d');
     const scoreElement = document.getElementById('score');
-    const livesElement = document.getElementById('lives');
+    // const livesElement = document.getElementById('lives');
     const levelElement = document.getElementById('level');
     const startButtonContainer = document.getElementById('start-button-container');
     const startButton = document.getElementById('start-button');
+    const heart = document.getElementById("heart");
 
     let score = 0;
     let lives = 4;
@@ -72,7 +73,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 createExplosion(wordObj.x, gameCanvas.height - 20, wordObj.word);
                 fallingWords.splice(index, 1);
                 lives--;
-                livesElement.innerText = `Lives: ${lives}`;
+                // livesElement.innerText = `Lives: ${lives}`;
+                switch (lives) {
+                    case 1:
+                        heart.innerText = "♥♡♡♡"
+                        break;
+                    case 2:
+                        heart.innerText = "♥♥♡♡"
+                        break;
+                    case 3:
+                        heart.innerText = "♥♥♥♡"
+                        break;
+                    case 4:
+                        heart.innerText = "♥♥♥♥"
+                        break;
+                
+                    default:
+                        heart.innerText = "♡♡♡♡"
+                        break;
+                }
                 if (lives <= 0) {
                     gameOver();
                 }
@@ -99,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gameInterval = setInterval(createFallingWord, 2000);
         updateInterval = setInterval(updateFallingWords, 30);
         levelUpInterval = setInterval(levelUp, levelUpTime);
+        heart.innerText = "♥♥♥♥"
     }
 
     function checkCollision(predictedWord) {
@@ -121,8 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         level = 1;
         fallSpeed = 2;
         scoreElement.innerText = `Score: ${score}`;
-        livesElement.innerText = `Lives: ${lives}`;
+        // livesElement.innerText = `Lives: ${lives}`;
         levelElement.innerText = `Level: ${level}`;
+        heart.innerText = "♥♥♥♥"
         fallingWords = [];
         samePredictionCount = 0;
         gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);

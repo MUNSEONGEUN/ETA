@@ -38,6 +38,16 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 98%;
+}
+#score{
+    margin-right: 12px;
+}
+
+#heart{
+    position: absolute;       
+    right: 10px;
+    top: 10px;
 }
 
 /* Start button 스타일 */
@@ -96,6 +106,17 @@ body {
     padding: 5px 10px; /* 패딩 줄임 */
     border-radius: 10px;
     border: 2px solid #ff4500;
+    width: 30%;
+}
+.info-vertical {
+    
+}
+#heart{
+    line-height: 18px;
+    font-size: 22px;
+}
+.score-lives-level{
+    display: flex;
 }
 
 /* 카메라 영역 스타일 */
