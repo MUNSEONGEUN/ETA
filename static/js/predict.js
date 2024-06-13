@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const infoButton = document.getElementById('info-button');
     const popup = document.getElementById('popup');
     const closeButton = popup.querySelector('.close-button');
+    const videoContainer = document.getElementById('video-container');
+    const popupTitle = document.getElementById('popup-title');
+
+    let currentMode = 'default'; // 현재 모드 초기값
 
     infoButton.addEventListener('click', () => {
+        loadVideos(currentMode);
         popup.classList.add('show');
     });
 
@@ -17,6 +22,115 @@ document.addEventListener('DOMContentLoaded', function() {
             popup.classList.remove('show');
         }
     });
+
+    function loadVideos(mode) {
+        videoContainer.innerHTML = ''; // 이전 비디오 제거
+        let videos = [];
+
+        if (mode === 'alphabet') {
+            popupTitle.innerText = 'Alphabet Mode Videos';
+            videos = [
+                {url : "https://www.youtube.com/embed/bsYLoba2CV0?si=K0tqvWbAm2FSxEfX", description: '< A >'},
+                {url : "https://www.youtube.com/embed/3A4pdSEmuTE?si=q6Usk4cysEcXUDOc", description: '< B >'},
+                {url : "https://www.youtube.com/embed/dJqoBH9NDOI?si=R8RLX-eN1JTxsZFg", description: '< C >'},
+                {url : "https://www.youtube.com/embed/unaicv88lLI?si=GC5w27PRH_-Rezax", description: '< D >'},
+                {url : "https://www.youtube.com/embed/DuqblObUlxk?si=lXzrKQvyjkdpJ11s", description: '< E >'},
+                {url : "https://www.youtube.com/embed/SadgQ0mvY50?si=ChPnfHvNMpR8SDnt", description: '< F >'},
+                {url : "https://www.youtube.com/embed/UM8feCdEh2k?si=K5yTGv9C1GpGqdMm", description: '< G >'},
+                {url : "https://www.youtube.com/embed/gz6Ux2SWVTc?si=EhNFqm2Zp1n9ONVB", description: '< H >'},
+                {url : "https://www.youtube.com/embed/Hyfqjm3fFNk?si=KyitvD1JZL1VpxPZ", description: '< I >'},
+                {url : "https://www.youtube.com/embed/uvqNhKdoUw0?si=mrpEybYyeAsg2vg2", description: '< J >'},
+                {url : "https://www.youtube.com/embed/9KP2yPZTZ5o?si=p5VkTF_LbKmi6xSN", description: '< K >'},
+                {url : "https://www.youtube.com/embed/PUVdWVNCZTk?si=ou5iCaeztHIadJjo", description: '< L >'},
+                {url : "https://www.youtube.com/embed/rrTRRfUzlB0?si=PcEuiBD3H025F1gK", description: '< M >'},
+                {url : "https://www.youtube.com/embed/fF5_b0dhTS4?si=6INBhxP3KlhKEB82", description: '< N >'},
+                {url : "https://www.youtube.com/embed/lvl-UxT0oOM?si=5e0iD9d15ug2OOvL", description: '< O >'},
+                {url : "https://www.youtube.com/embed/9dlrwu_9qk8?si=gGN2W0AZeuc96oqp", description: '< P >'},
+                {url : "https://www.youtube.com/embed/asa1mwMzuN8?si=QMQR-V1PZImP09hx", description: '< Q >'},
+                {url : "https://www.youtube.com/embed/S9Wsq66A9xI?si=00cRnuTrcu-igZ25", description: '< R >'},
+                {url : "https://www.youtube.com/embed/sABdqaGImmw?si=7IRXK9VZN8Cw6sOw", description: '< S >'},
+                {url : "https://www.youtube.com/embed/Z4RUlAm5EWA?si=skfY-505zZw9zAIK", description: '< T >'},
+                {url : "https://www.youtube.com/embed/TMk2OJAmOmE?si=E1xKQQr21Z1f9yCZ", description: '< U >'},
+                {url : "https://www.youtube.com/embed/0mjIJ_Maf34?si=uvZtXFgkOlaP8N0Y", description: '< V >'},
+                {url : "https://www.youtube.com/embed/qd5icmqdALI?si=7hmcPg4e_Qznl--k", description: '< W >'},
+                {url : "https://www.youtube.com/embed/vdL-hKuSwTs?si=I14NOFH_gD9Gt7nJ", description: '< X >'},
+                {url : "https://www.youtube.com/embed/t689H0-w-Ww?si=puy4bKHvf6uoPDLO", description: '< Y >'},
+                {url : "https://www.youtube.com/embed/0BlkX6MWByw?si=-pW0I9WPe9RoV-3T", description: '< Z >'}
+            ];
+        } else if (mode === 'numbers') {
+            popupTitle.innerText = 'Numbers Mode Videos';
+            videos = [
+                {url: "https://www.youtube.com/embed/m_4rbJcuXLo?si=cUax1otFpywxHwzw", description: '< 0 >'},
+                {url: "https://www.youtube.com/embed/8K4yWpiVJPk?si=kPzIQ9H64XYOahZU", description: '< 1 >'},
+                {url: "https://www.youtube.com/embed/fQppTpwisZQ?si=iiKBTte57AydG6lY", description: '< 2 >'},
+                {url: "https://www.youtube.com/embed/J58DGrShwuY?si=WAy_PeU3pDoDGOU-", description: '< 3 >'},
+                {url: "https://www.youtube.com/embed/txpKOXcmwn0?si=8AG7MACPSXB8QEJn", description: '< 4 >'},
+                {url: "https://www.youtube.com/embed/U8SpX0zlFpE?si=s-wvF_0RMrnuzyzu", description: '< 5 >'},
+                {url: "https://www.youtube.com/embed/RsAsBv6I5T8?si=r84MYxUbeNbovFpf", description: '< 6 >'},
+                {url: "https://www.youtube.com/embed/nnnTYk1UlS4?si=5aAGuWTWiSUfUN2L", description: '< 7 >'},
+                {url: "https://www.youtube.com/embed/u40PBl5xRTQ?si=nqp3nfCZrjPkzstQ", description: '< 8 >'},
+                {url: "https://www.youtube.com/embed/fB1UgWDghow?si=uUJ-fU5cpmoGdwj8", description: '< 9 >'}
+            ];
+        } else if (mode === 'words') {
+            popupTitle.innerText = 'Words Mode Videos';
+            videos = [
+                {url: "https://www.youtube.com/embed//rhfJGeMDMzQ", description: '< Hello >'},
+                {url: "https://www.youtube.com/embed/Zp2k29lkqkg?si=ChjV4XnLyF4jX93U", description: '< I love you >'},
+                {url: "https://www.youtube.com/embed/0usayvOXzHo?si=YPKbenybmSHIy1PT", description: '< Yes >'},
+                {url: "https://www.youtube.com/embed/QJXKaOSyl4o?si=7w0fGulGyWINA4Ip", description: '< No >'},
+                {url: "https://www.youtube.com/embed/-hUjwyVQdbo?si=RAeWU_8I03hwtQYi", description: '< Korea >'},
+                {url: "https://www.youtube.com/embed/H6CQg4zRmlA?si=B1LGeD1qomTha5St", description: '< Cry >'},
+                {url: "https://www.youtube.com/embed/Na4qNZR3RWA?si=osODZb_CZXMwaOhK", description: '< Perfect >'},
+                {url: "https://www.youtube.com/embed/K0yp2v6Atxs?si=Qz1LUGqn32gBeCTP", description: '< Why >'},
+                {url: "https://www.youtube.com/embed/B36qDOOtm20?si=6pKGblxuV-DXCjDB", description: '< walk >'}
+            ];
+        } else {
+            popupTitle.innerText = 'How to Use';
+            videoContainer.innerHTML = `
+                <div class="usage-step">
+                    <h3>웹캠 구도 설정</h3>
+                    <p>손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.</p>
+                </div>
+                <div class="usage-step">
+                    <h3>웹캠 엑세스 허용</h3>
+                    <p>메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.</p>
+                </div>
+                <div class="usage-step">
+                    <h3>모드 설정</h3>
+                    <p>알파벳, 숫자, 단어 모드 중 무엇을 표현하고 싶은지 선택하세요.</p>
+                </div>
+                <div class="usage-step">
+                    <h3>수어 시작</h3>
+                    <p>웹캠 앞에서 손으로 신호를 만들기 시작하세요. 우리 시스템은 MediaPipe 기술을 사용하여 귀하의 표지판을 감지하고 해석합니다.</p>
+                </div>
+                <div class="usage-step">
+                    <h3>보내기 요청</h3>
+                    <p>실시간으로 피드백된 내용을 확인하고 보내기를 누르시면 음성으로 반환됩니다.</p>
+                </div>
+            `;
+            return; // 아래 코드는 실행하지 않도록
+        }
+
+        videos.forEach(video => {
+            const videoWrapper = document.createElement('div');
+            videoWrapper.classList.add('video-wrapper');
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = video.url;
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            
+            const description = document.createElement('p');
+            description.innerText = video.description;
+            description.classList.add('video-description');
+
+            videoWrapper.appendChild(iframe);
+            videoWrapper.appendChild(description);
+
+            videoContainer.appendChild(videoWrapper);
+        });
+    }
 
     // Mediapipe 및 예측 관련 코드
     const video = document.createElement('video');
@@ -177,6 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
         samePredictionCount = 0;
         lastPrediction = '';
         document.getElementById('word').innerText = ''; // 현재 예측된 단어 초기화
+        currentMode = mode; // 현재 모드를 업데이트
 
         // 모든 버튼의 활성 상태 해제
         document.querySelectorAll('.category-button').forEach(button => {
@@ -185,6 +300,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 현재 모드 버튼에 활성 상태 추가
         document.querySelector(`.category-button[onclick="setMode('${mode}')"]`).classList.add('active');
+
+        // 모드 변경 시 팝업 콘텐츠 스크롤 초기화
+        document.querySelector('.popup-content').scrollTop = 0;
+
+        // 모드 변경 시 비디오 컨테이너 업데이트
+        loadVideos(currentMode);
     }
 
     window.playAudio = function(text) {
