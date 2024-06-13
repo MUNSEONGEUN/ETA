@@ -5,7 +5,7 @@ function showText(language) {
         <h3>What's ASL?</h3>
         <p>American Sign Language (ASL) is a sign language that is spoken predominantly among deaf communities in the United States and Canada. ASL has its own grammar and vocabulary, and unlike spoken languages, it conveys meaning by using the shapes, positions, movements, and facial expressions of hands. ASL is a language independent of English and is used as a major means of communication among many deaf people in the United States and Canada. </p>
         <h3>Why Baby Sign?</h3>
-        <p>Learning sign language from an early age provides several advantages for both farmers and non-farmers. These advantages include language development, IQ proficiency, improved social skills, and parental ties. In addition, it is greatly helpful in promoting understanding and cooperation in communication between farmers and non-farm children.</p>
+        <p>Learning sign language from an early age provides several advantages for both deaf and non-deaf children. These advantages include language development, IQ proficiency, improved social skills, and parental ties. In addition, it is greatly helpful in promoting understanding and cooperation in communication between deaf and non-deaf children.</p>
     `;
 
     const koreanText = `
