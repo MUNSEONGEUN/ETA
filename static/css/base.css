@@ -8,10 +8,11 @@ article{
 }
 .sticky{
     position: fixed;
-    width: 50px;
-    height: 50px;
-    right: 30px;
-    bottom: 30px;
+    /* width: 50px; */
+    /* height: 70px; */
+    right: 10vw;
+    bottom: 50vh;
+    transform: translateY(50%);
     z-index: 999;
 
     border: #ffb3b3 1px solid;
@@ -29,11 +30,11 @@ article{
     justify-content: space-between;
     /* position: relative; */
 }
-.sticky:hover{
+/* .sticky:hover{
     height: 150px;
     transition: top 0.3s ease;
     
-}
+} */
 .sticky a:hover{
     cursor: url("./hand3.cur"), pointer;
 }
@@ -46,12 +47,12 @@ article{
        transform: translateY(-50px);
     }
    }
-.sticky:hover .link:nth-child(3){
+/* .sticky:hover .link:nth-child(3){
     transform: translateY(-100px);    
 }
 .sticky:hover .link:nth-child(2){
     transform: translateY(-50px);    
-}
+} */
 
 /* 
 
@@ -60,18 +61,20 @@ article{
 } */
 .icon {
     
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     /* padding-bottom: 100%; */
     /* box-sizing: border-box; */
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; */
 }
-
+.icon svg{
+    font-size: 30px;
+}
 .hidden {
     display: none;
 }

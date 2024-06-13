@@ -14,9 +14,9 @@
             <a class="icon" href="/"><i class="fa-solid fa-house"></i></a>
         </div>
         {% block sticky_links %}
-        <a id="recognition" class="icon link hidden" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
-        <a id="game" class="icon link hidden" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
-        <a id="learning" class="icon link hidden" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
+        <a id="recognition" class="icon link" href="{% url 'recognition' %}"><i class="fa-solid fa-hand"></i></a>
+        <a id="game" class="icon link" href="{% url 'game' %}"><i class="fa-solid fa-gamepad"></i></a>
+        <a id="learning" class="icon link" href="{% url 'learning' %}"><i class="fa-solid fa-book-open"></i></a>
         {% endblock %}
     </div>
     {% block content %}
