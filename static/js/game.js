@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.getElementById('start-button');
 
     let score = 0;
-    let lives = 3;
+    let lives = 4;
     let level = 1;
     let fallSpeed = 2;
     let levelUpTime = 10000; // 10 seconds per level
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resetGame() {
         score = 0;
-        lives = 3;
+        lives = 4;
         level = 1;
         fallSpeed = 2;
         scoreElement.innerText = `Score: ${score}`;
