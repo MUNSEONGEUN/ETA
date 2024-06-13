@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="{% static 'css/mobile/m_main.css' %}" type="text/css" media="screen and (max-width: 768px)"/>
 {% endblock %}
 {% block content %}
+    <div class="toggle" style="opacity: 1;">Eng</div>
     <div class="curtain">
-        <div class="toggle">Eng</div>
+        
         <section class="hero">
-            <h2>Welcome to Wow Baby Sign</h2>
-            <p>쉽고 재미있게 수화의 세계를 탐험해보세요.</p>
+            <h2 class="lang" data-en= "Welcome to Wow Baby Sign" data-ko="안녕하세요 와우 베이비사인 입니다">Welcome to Wow Baby Sign</h2>
+            <p class="lang" data-en="Explore the world of sign language easily and enjoyably." data-ko="쉽고 재미있게 수화의 세계를 탐험해보세요.">쉽고 재미있게 수화의 세계를 탐험해보세요.</p>
         </section>
         <article class="comic-sans kcc-dodamdodam">
             <div class="menu">
@@ -30,77 +31,80 @@
             <span></span>
             <span></span>
         </div>
+        <div class="language-buttons" style="text-align: center; margin: 20px 0;">
+            <button id="btn-korean">한국어</button>
+            <button id="btn-english">English</button>
+        </div>
     </div>
     <main>
         <div class="usage-section">
-            <div class="usage-title">손 인식 페이지 사용 방법</div>
+            <div class="usage-title lang" data-en="How to Use Hand Recognition Page" data-ko="손 인식 페이지 사용 방법">손 인식 페이지 사용 방법</div>
             <div class="usage-step hidden" data-step="Step 1">
-                <h3>웹캠 구도 설정</h3>
-                <p>손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.</p>
+                <h3 class="lang" data-en="Set Up Webcam Position" data-ko="웹캠 구도 설정">웹캠 구도 설정</h3>
+                <p class="lang" data-en="Ensure that the webcam is positioned correctly to clearly recognize the shape of your hand." data-ko="손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.">손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 2">
-                <h3>웹캠 엑세스 허용</h3>
-                <p>메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.</p>
+                <h3 class="lang" data-en="Allow Webcam Access" data-ko="웹캠 엑세스 허용">웹캠 엑세스 허용</h3>
+                <p class="lang" data-en="When prompted, allow the website to access your webcam to start the hand recognition process." data-ko="메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.">메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 3">
-                <h3>모드 설정</h3>
-                <p>알파벳, 숫자, 단어 모드 중 무엇을 표현하고 싶은지 선택하세요.</p>
+                <h3 class="lang" data-en="Set Mode" data-ko="모드 설정">모드 설정</h3>
+                <p class="lang" data-en="Choose what you want to express: alphabets, numbers, or words." data-ko="알파벳, 숫자, 단어 모드 중 무엇을 표현하고 싶은지 선택하세요.">알파벳, 숫자, 단어 모드 중 무엇을 표현하고 싶은지 선택하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 4">
-                <h3>수어 시작</h3>
-                <p>웹캠 앞에서 손으로 신호를 만들기 시작하세요. 우리 시스템은 MediaPipe 기술을 사용하여 귀하의 표지판을 감지하고 해석합니다.</p>
+                <h3 class="lang" data-en="Start Signing" data-ko="수어 시작">수어 시작</h3>
+                <p class="lang" data-en="Start making signs with your hand in front of the webcam. Our system uses MediaPipe technology to detect and interpret your signs." data-ko="웹캠 앞에서 손으로 신호를 만들기 시작하세요. 우리 시스템은 MediaPipe 기술을 사용하여 귀하의 표지판을 감지하고 해석합니다.">웹캠 앞에서 손으로 신호를 만들기 시작하세요. 우리 시스템은 MediaPipe 기술을 사용하여 귀하의 표지판을 감지하고 해석합니다.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 5">
-                <h3>보내기 요청</h3>
-                <p>실시간으로 피드백된 내용을 확인하고 보내기를 누르시면 음성으로 반환됩니다.</p>
+                <h3 class="lang" data-en="Send Request" data-ko="보내기 요청">보내기 요청</h3>
+                <p class="lang" data-en="Review the feedback in real-time and click send to have it returned as a voice output." data-ko="실시간으로 피드백된 내용을 확인하고 보내기를 누르시면 음성으로 반환됩니다.">실시간으로 피드백된 내용을 확인하고 보내기를 누르시면 음성으로 반환됩니다.</p>
             </div>
-            
         </div>
         <div class="usage-section">
-            <div class="usage-title">게임 페이지 사용 방법</div>
+            <div class="usage-title lang" data-en="How to Use Game Page" data-ko="게임 페이지 사용 방법">게임 페이지 사용 방법</div>
             <div class="usage-step hidden" data-step="Step 1">
-                <h3>웹캠 구도 설정</h3>
-                <p>손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.</p>
+                <h3 class="lang" data-en="Set Up Webcam Position" data-ko="웹캠 구도 설정">웹캠 구도 설정</h3>
+                <p class="lang" data-en="Ensure that the webcam is positioned correctly to clearly recognize the shape of your hand." data-ko="손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.">손의 모양을 명확하게 인식할 수 있도록 웹캠이 올바르게 위치되어 있는지 확인하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 2">
-                <h3>웹캠 엑세스 허용</h3>
-                <p>메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.</p>
+                <h3 class="lang" data-en="Allow Webcam Access" data-ko="웹캠 엑세스 허용">웹캠 엑세스 허용</h3>
+                <p class="lang" data-en="When prompted, allow the website to access your webcam to start the hand recognition process." data-ko="메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.">메시지가 표시되면 웹사이트에서 웹캠에 액세스하여 손 인식 프로세스를 시작할 수 있도록 허용하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 3">
-                <h3>게임 모드 설정</h3>
-                <p>알파벳, 숫자, 단어 모드 중 무슨 게임을 하고 싶은지 선택하세요.</p>
+                <h3 class="lang" data-en="Set Game Mode" data-ko="게임 모드 설정">게임 모드 설정</h3>
+                <p class="lang" data-en="Choose the game mode you want to play: alphabets, numbers, or words." data-ko="알파벳, 숫자, 단어 모드 중 무슨 게임을 하고 싶은지 선택하세요.">알파벳, 숫자, 단어 모드 중 무슨 게임을 하고 싶은지 선택하세요.</p>
             </div>
             <div class="usage-step hidden" data-step="Step 4">
-                <h3>게임 시작</h3>
-                <p>게임 화면 중앙에 표시된 시작 버튼을 누르시고 게임을 시작하세요.</p>
+                <h3 class="lang" data-en="Start Game" data-ko="게임 시작">게임 시작</h3>
+                <p class="lang" data-en="Press the start button displayed in the center of the game screen to begin." data-ko="게임 화면 중앙에 표시된 시작 버튼을 누르시고 게임을 시작하세요.">게임 화면 중앙에 표시된 시작 버튼을 누르시고 게임을 시작하세요.</p>
             </div>
         </div>
         <div class="qna-section">
-            <div class="qna-title">수어의 재미있는 지식</div>
+            <div class="qna-title lang" data-en="Fun Facts About Sign Language" data-ko="수어의 재미있는 지식">수어의 재미있는 지식</div>
             <div class="qna">
                 <div class="qna-box question hidden">
-                    <p>청각장애인은 수화로 소리를 크게 표현하거나 강조할 수 있는 방법이 있나요?</p>
+                    <p class="lang" data-en="Can deaf people express loud sounds or emphasis in sign language?" data-ko="청각장애인은 수화로 소리를 크게 표현하거나 강조할 수 있는 방법이 있나요?">청각장애인은 수화로 소리를 크게 표현하거나 강조할 수 있는 방법이 있나요?</p>
                 </div>
                 <div class="qna-box answer hidden">
-                    <p>청각장애인들은 크게 말하고 싶을 때 과장된 움직임을 사용합니다. 기호는 더 크게 만들며, 어떤 것이 크게 또는 강하게 강조되어 말하고 있음을 나타내기 위한 더 강력한 움직임입니다. 이것은 더 격렬한 팔과 손 동작으로 서명하는 것을 포함할 수 있습니다.</p>
+                    <p class="lang" data-en="Deaf individuals use exaggerated movements to express loudness. Signs are made larger and more forceful to indicate emphasis or loud speech, which may include more vigorous arm and hand movements." data-ko="청각장애인들은 크게 말하고 싶을 때 과장된 움직임을 사용합니다. 기호는 더 크게 만들며, 어떤 것이 크게 또는 강하게 강조되어 말하고 있음을 나타내기 위한 더 강력한 움직임입니다. 이것은 더 격렬한 팔과 손 동작으로 서명하는 것을 포함할 수 있습니다.">청각장애인들은 크게 말하고 싶을 때 과장된 움직임을 사용합니다. 기호는 더 크게 만들며, 어떤 것이 크게 또는 강하게 강조되어 말하고 있음을 나타내기 위한 더 강력한 움직임입니다. 이것은 더 격렬한 팔과 손 동작으로 서명하는 것을 포함할 수 있습니다.</p>
                 </div>
                 <div class="qna-box question hidden">
-                    <p>수어와 수화의 차이점은 무엇인가요?</p>
+                    <p class="lang" data-en="What is the difference between sign language and signed language?" data-ko="수어와 수화의 차이점은 무엇인가요?">수어와 수화의 차이점은 무엇인가요?</p>
                 </div>
                 <div class="qna-box answer hidden">
-                    <p>수화는 '손을 움직여 말한다'는 뜻을 가지고 있고 수화는 수어의 일부이고, 청각장애인들이 사용하는 언어의 총체로선 '수어'라는 표현이 올바릅니다.</p>
+                    <p class="lang" data-en="Signed language refers to 'speaking by moving hands,' and it is a part of sign language. The correct term for the language used by deaf individuals as a whole is 'sign language.'" data-ko="수화는 '손을 움직여 말한다'는 뜻을 가지고 있고 수화는 수어의 일부이고, 청각장애인들이 사용하는 언어의 총체로선 '수어'라는 표현이 올바릅니다.">수화는 '손을 움직여 말한다'는 뜻을 가지고 있고 수화는 수어의 일부이고, 청각장애인들이 사용하는 언어의 총체로선 '수어'라는 표현이 올바릅니다.</p>
                 </div>
                 <div class="qna-box question hidden">
-                    <p>수어에 존댓말이 있나요?</p>
+                    <p class="lang" data-en="Is there formal speech in sign language?" data-ko="수어에 존댓말이 있나요?">수어에 존댓말이 있나요?</p>
                 </div>
                 <div class="qna-box answer hidden">
-                    <p>수어는 화자의 태도에 따라 동일한 어휘가 비공식적이고 형식적이 될 수 있습니다. 그렇기 때문에 표정과 태도를 통해 상대방이 나를 얼마나 존중하는지 구분합니다. 수화 자체에 존칭을 의미하는 형식적인 단어가 따로 없습니다.</p>
+                    <p class="lang" data-en="Sign language can be informal or formal based on the speaker's attitude. The same vocabulary can be used formally or informally depending on facial expressions and demeanor. There are no specific words for formal address in sign language itself." data-ko="수어는 화자의 태도에 따라 동일한 어휘가 비공식적이고 형식적이 될 수 있습니다. 그렇기 때문에 표정과 태도를 통해 상대방이 나를 얼마나 존중하는지 구분합니다. 수화 자체에 존칭을 의미하는 형식적인 단어가 따로 없습니다.">수어는 화자의 태도에 따라 동일한 어휘가 비공식적이고 형식적이 될 수 있습니다. 그렇기 때문에 표정과 태도를 통해 상대방이 나를 얼마나 존중하는지 구분합니다. 수화 자체에 존칭을 의미하는 형식적인 단어가 따로 없습니다.</p>
                 </div>
                 <div class="qna-box question hidden">
-                    <p>오른손과 왼손에 따라 차이가 있나요?</p>
+                    <p class="lang" data-en="Is there a difference between the use of the right and left hand?" data-ko="오른손과 왼손에 따라 차이가 있나요?">오른손과 왼손에 따라 차이가 있나요?</p>
                 </div>
                 <div class="qna-box answer hidden">
-                    <p>수화는 오른손 왼손 구분이 없습니다. 오른손의 의미에 영향을 주지 않는 경우 양손을 사용합니다. 또한 자신을 기준으로 왼쪽 오른쪽을 설명합니다.</p>
+                    <p class="lang" data-en="There is no distinction between the right and left hands in sign language. Both hands are used as long as it does not affect the meaning of the signs. Additionally, directions are explained based on the signer's perspective." data-ko="수화는 오른손 왼손 구분이 없습니다. 오른손의 의미에 영향을 주지 않는 경우 양손을 사용합니다. 또한 자신을 기준으로 왼쪽 오른쪽을 설명합니다.">수화는 오른손 왼손 구분이 없습니다. 오른손의 의미에 영향을 주지 않는 경우 양손을 사용합니다. 또한 자신을 기준으로 왼쪽 오른쪽을 설명합니다.</p>
                 </div>
             </div>
         </div>
@@ -109,6 +113,24 @@
     <script src="{% static 'js/base.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <div class="logo">
-        <img src="{% static 'images/logo.PNG' %}" alt="Baby Sign Language Logo">
+        <img src="{% static 'images/logo.PNG' %}" alt="Baby Sign Language Logo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const koreanButton = document.getElementById('btn-korean');
+            const englishButton = document.getElementById('btn-english');
+
+            koreanButton.addEventListener('click', function() {
+                document.querySelectorAll('.lang').forEach(function(element) {
+                    element.innerText = element.getAttribute('data-ko');
+                });
+            });
+
+            englishButton.addEventListener('click', function() {
+                document.querySelectorAll('.lang').forEach(function(element) {
+                    element.innerText = element.getAttribute('data-en');
+                });
+            });
+        });
+    </script>
 {% endblock %}

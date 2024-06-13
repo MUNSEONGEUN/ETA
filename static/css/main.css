@@ -11,11 +11,11 @@ body {
 a:hover{
     cursor: url("./hand3.cur"), pointer;
 }
-.toggle{
-    position: absolute;
+.toggle {
+    position: fixed;
     top: 20px;
     right: 30px;
-    font-size: 48px;
+    font-size: 48px;    
 }
 .curtain {
     display: flex;

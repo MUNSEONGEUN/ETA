@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.usage-step, .qna-box');
     const curtain = document.querySelector('.curtain');
@@ -28,3 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
         curtain.style.opacity = Math.max(0, Math.min(1, opacity)); // Ensure opacity stays between 0 and 1
     });
 });
+
+const language = document.querySelector(".toggle")
+language.addEventListener("click",()=>{
+    language.classList.toggle("kor")
+    if(language.classList.contains("kor")){
+
+    }
+    else{
+        
+    }
+})

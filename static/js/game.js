@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameCanvas = document.getElementById('gameCanvas');
     const gameCtx = gameCanvas.getContext('2d');
     const scoreElement = document.getElementById('score');
-    // const livesElement = document.getElementById('lives');
     const levelElement = document.getElementById('level');
     const startButtonContainer = document.getElementById('start-button-container');
     const startButton = document.getElementById('start-button');
@@ -73,23 +72,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 createExplosion(wordObj.x, gameCanvas.height - 20, wordObj.word);
                 fallingWords.splice(index, 1);
                 lives--;
-                // livesElement.innerText = `Lives: ${lives}`;
                 switch (lives) {
                     case 1:
-                        heart.innerText = "♥♡♡♡"
+                        heart.innerText = "♥♡♡♡";
                         break;
                     case 2:
-                        heart.innerText = "♥♥♡♡"
+                        heart.innerText = "♥♥♡♡";
                         break;
                     case 3:
-                        heart.innerText = "♥♥♥♡"
+                        heart.innerText = "♥♥♥♡";
                         break;
                     case 4:
-                        heart.innerText = "♥♥♥♥"
+                        heart.innerText = "♥♥♥♥";
                         break;
-                
                     default:
-                        heart.innerText = "♡♡♡♡"
+                        heart.innerText = "♡♡♡♡";
                         break;
                 }
                 if (lives <= 0) {
@@ -115,10 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startGame() {
         startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
+        resetGame(); // 게임을 시작할 때 초기화
         gameInterval = setInterval(createFallingWord, 2000);
         updateInterval = setInterval(updateFallingWords, 30);
         levelUpInterval = setInterval(levelUp, levelUpTime);
-        heart.innerText = "♥♥♥♥"
+        heart.innerText = "♥♥♥♥";
     }
 
     function checkCollision(predictedWord) {
@@ -141,9 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
         level = 1;
         fallSpeed = 2;
         scoreElement.innerText = `Score: ${score}`;
-        // livesElement.innerText = `Lives: ${lives}`;
         levelElement.innerText = `Level: ${level}`;
-        heart.innerText = "♥♥♥♥"
+        heart.innerText = "♥♥♥♥";
         fallingWords = [];
         samePredictionCount = 0;
         gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
@@ -161,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(updateInterval);
         clearInterval(levelUpInterval);
         alert(`Game Over\nFinal Score: ${score}\nFinal Level: ${level}`);
-        resetGame();
         startButtonContainer.style.display = 'none'; // Start 버튼 숨기기
     }
 
