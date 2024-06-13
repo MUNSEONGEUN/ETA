@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.usage-step, .qna-box');
     const curtain = document.querySelector('.curtain');
-
+    const scroller = document.getElementById("scroller");
     let observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -27,21 +27,22 @@ document.addEventListener('DOMContentLoaded', function() {
         let windowHeight = window.innerHeight;
         let opacity = 1 - (scrollPosition / (windowHeight * 0.6)); // Adjust the multiplier for faster/slower fade
         curtain.style.opacity = Math.max(0, Math.min(1, opacity)); // Ensure opacity stays between 0 and 1
+        scroller.style.opacity = 1-Math.max(0, Math.min(1, opacity));
     });
     const koreanButton = document.getElementById('btn-korean');
     const englishButton = document.getElementById('btn-english');
 
-    koreanButton.addEventListener('click', function() {
-        document.querySelectorAll('.lang').forEach(function(element) {
-            element.innerText = element.getAttribute('data-ko');
-        });
-    });
+    // koreanButton.addEventListener('click', function() {
+    //     document.querySelectorAll('.lang').forEach(function(element) {
+    //         element.innerText = element.getAttribute('data-ko');
+    //     });
+    // });
 
-    englishButton.addEventListener('click', function() {
-        document.querySelectorAll('.lang').forEach(function(element) {
-            element.innerText = element.getAttribute('data-en');
-        });
-    });
+    // englishButton.addEventListener('click', function() {
+    //     document.querySelectorAll('.lang').forEach(function(element) {
+    //         element.innerText = element.getAttribute('data-en');
+    //     });
+    // });
 });
 
 const language = document.querySelector(".toggle")
@@ -60,4 +61,9 @@ language.addEventListener("click",()=>{
             element.innerText = element.getAttribute('data-en');
         });
     }
-})
+});
+const scroller = document.getElementById("scroller")
+scroller.addEventListener("click", event => { 
+    console.log("123123");
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}); 

@@ -33,6 +33,7 @@
 .qna-section{
     padding: 20px;
     max-width: 82vw;
+    margin: 0 auto;
 }
 .qna-title {
     font-size: 27px;
@@ -42,4 +43,35 @@
 
 .qna-box.answer + .qna-box.question {
     margin-top: 12vh;
+}
+.scroll-indicator span{
+    width: 18px;
+    height: 18px;
+}
+@keyframes m-scroll-indicator {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(0px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(0px);
+    }
+}
+.scroll-indicator span:first-child{
+    display: none;
+}
+.scroll-indicator span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-left: 4px solid white;
+    border-bottom: 4px solid white;
+    transform: rotate(-45deg);
+    margin: 5px;
+    animation: m-scroll-indicator 1.5s infinite;
+    border-radius: 4px;
 }
