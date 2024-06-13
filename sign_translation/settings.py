@@ -1,20 +1,19 @@
 from pathlib import Path
 import os
-from decouple import config
+from decouple import config # 설정 값을 외부 파일에서 불러오기 위한 모듈
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# decouple 사용처
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-cqxan4$&6ym$9unri)6_nb_stux#=y*w8w*%juwxx55q!tesj9')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 호스트 및 CSRF 설정
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://www.wowbabysign.site']
 
-# Application definition
+# 앱 설정
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -36,8 +35,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# URL 설정
 ROOT_URLCONF = "sign_translation.urls"
 
+# 템플릿 설정
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -64,7 +65,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# 패스워드 검증
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -80,7 +81,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# 국제화 및 시간대 설정
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
@@ -91,4 +92,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# 자동 필드 설정
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
