@@ -11,6 +11,7 @@
 {% endblock %}
 {% block content %}
     <div class="curtain">
+        <div class="toggle">Eng</div>
         <section class="hero">
             <h2>Welcome to Wow Baby Sign</h2>
             <p>쉽고 재미있게 수화의 세계를 탐험해보세요.</p>
@@ -23,6 +24,12 @@
                 <a class="button" href="{% url 'about' %}">About us</a>
             </div>
         </article>
+        <!-- V자 모양 스크롤 유도 요소 추가 -->
+        <div class="scroll-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
     <main>
         <div class="usage-section">
