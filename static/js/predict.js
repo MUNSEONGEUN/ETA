@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 팝업 관련 코드
+    const infoButton = document.getElementById('info-button');
+    const popup = document.getElementById('popup');
+    const closeButton = popup.querySelector('.close-button');
+
+    infoButton.addEventListener('click', () => {
+        popup.classList.add('show');
+    });
+
+    closeButton.addEventListener('click', () => {
+        popup.classList.remove('show');
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.classList.remove('show');
+        }
+    });
+
+    // Mediapipe 및 예측 관련 코드
     const video = document.createElement('video');
     video.setAttribute('playsinline', '');
     video.setAttribute('autoplay', '');
