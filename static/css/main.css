@@ -309,11 +309,11 @@ a:hover{
     border-top: 4px solid white;
     transform: rotate(225deg);
     margin: 5px;
-    animation: scroll-indicator 1.5s infinite;
+    animation: t-scroll-indicator 1.5s infinite;
     border-radius: 4px;
     /* transform: rotate(45deg); */
 }
-@keyframes scroll-indicator {
+@keyframes t-scroll-indicator {
     0% {
         opacity: 0;
         transform: rotate(-45deg);
