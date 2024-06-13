@@ -214,17 +214,13 @@ document.addEventListener('DOMContentLoaded', function() {
         minTrackingConfidence: 0.5
     });
 
-    // 장치 감지
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    // 카메라 설정
     const camera = new Camera(video, {
         onFrame: async () => {
             await hands.send({image: video});
             drawVideoAndResults();
         },
-        width: isMobile ? 160 : 320,  // 모바일일 경우 해상도를 낮춤
-        height: isMobile ? 120 : 240
+        width: 160,
+        height: 120
     });
     camera.start();
 
