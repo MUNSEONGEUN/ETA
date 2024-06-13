@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">    
     <link rel="stylesheet" href="{% static 'css/mobile/m_main.css' %}" type="text/css" media="screen and (max-width: 768px)"/>
-    <div class="language-buttons" style="text-align: center; margin: 20px 0;">
-        <button id="btn-korean">한국어</button>
-        <button id="btn-english">English</button>
-    </div>
+
 {% endblock %}
 {% block content %}
+    <div class="toggle" style="opacity: 1;">Eng</div>
     <div class="curtain">
+        
         <section class="hero">
             <h2>Welcome to Wow Baby Sign</h2>
             <p class="lang" data-en="Explore the world of sign language easily and enjoyably." data-ko="쉽고 재미있게 수화의 세계를 탐험해보세요!">쉽고 재미있게 수화의 세계를 탐험해보세요!</p>
@@ -28,6 +27,10 @@
             </div>
         </article>
     </div>
+    <div class="scroll-indicator">
+        <span></span><span></span><span></span>
+    </div>
+
     <main>
         <div class="usage-section">
             <div class="usage-title lang" data-en="How to Use Hand Recognition Page" data-ko="손 인식 페이지 사용 방법">손 인식 페이지 사용 방법</div>
@@ -108,21 +111,6 @@
         <img src="{% static 'images/logo.PNG' %}" alt="Baby Sign Language Logo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const koreanButton = document.getElementById('btn-korean');
-            const englishButton = document.getElementById('btn-english');
-
-            koreanButton.addEventListener('click', function() {
-                document.querySelectorAll('.lang').forEach(function(element) {
-                    element.innerText = element.getAttribute('data-ko');
-                });
-            });
-
-            englishButton.addEventListener('click', function() {
-                document.querySelectorAll('.lang').forEach(function(element) {
-                    element.innerText = element.getAttribute('data-en');
-                });
-            });
-        });
+       
     </script>
 {% endblock %}

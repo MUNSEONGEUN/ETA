@@ -13,6 +13,7 @@ body{
     width: 100vw;
     flex-direction: row;
     justify-content: space-around;
+    transform: unset
 }
 .sticky:hover{
     height: 50px;
